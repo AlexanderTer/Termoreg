@@ -1,0 +1,2967 @@
+
+Atmega8535.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000009ca  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000a3e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000017  00800060  00800060  00000a3e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000a3e  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000a70  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000088  00000000  00000000  00000ab0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000228b  00000000  00000000  00000b38  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000782  00000000  00000000  00002dc3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000bd6  00000000  00000000  00003545  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000148  00000000  00000000  0000411c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000a56  00000000  00000000  00004264  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000c22  00000000  00000000  00004cba  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000c8  00000000  00000000  000058dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	15 c0       	rjmp	.+42     	; 0x2c <__ctors_end>
+   2:	a3 c4       	rjmp	.+2374   	; 0x94a <__vector_1>
+   4:	b6 c4       	rjmp	.+2412   	; 0x972 <__vector_2>
+   6:	2c c0       	rjmp	.+88     	; 0x60 <__bad_interrupt>
+   8:	2b c0       	rjmp	.+86     	; 0x60 <__bad_interrupt>
+   a:	2a c0       	rjmp	.+84     	; 0x60 <__bad_interrupt>
+   c:	29 c0       	rjmp	.+82     	; 0x60 <__bad_interrupt>
+   e:	28 c0       	rjmp	.+80     	; 0x60 <__bad_interrupt>
+  10:	27 c0       	rjmp	.+78     	; 0x60 <__bad_interrupt>
+  12:	26 c0       	rjmp	.+76     	; 0x60 <__bad_interrupt>
+  14:	25 c0       	rjmp	.+74     	; 0x60 <__bad_interrupt>
+  16:	24 c0       	rjmp	.+72     	; 0x60 <__bad_interrupt>
+  18:	23 c0       	rjmp	.+70     	; 0x60 <__bad_interrupt>
+  1a:	22 c0       	rjmp	.+68     	; 0x60 <__bad_interrupt>
+  1c:	21 c0       	rjmp	.+66     	; 0x60 <__bad_interrupt>
+  1e:	20 c0       	rjmp	.+64     	; 0x60 <__bad_interrupt>
+  20:	1f c0       	rjmp	.+62     	; 0x60 <__bad_interrupt>
+  22:	1e c0       	rjmp	.+60     	; 0x60 <__bad_interrupt>
+  24:	1d c0       	rjmp	.+58     	; 0x60 <__bad_interrupt>
+  26:	d2 c3       	rjmp	.+1956   	; 0x7cc <__vector_19>
+  28:	1b c0       	rjmp	.+54     	; 0x60 <__bad_interrupt>
+
+0000002a <__ctors_start>:
+  2a:	cd 04       	cpc	r12, r13
+
+0000002c <__ctors_end>:
+  2c:	11 24       	eor	r1, r1
+  2e:	1f be       	out	0x3f, r1	; 63
+  30:	cf e5       	ldi	r28, 0x5F	; 95
+  32:	d2 e0       	ldi	r29, 0x02	; 2
+  34:	de bf       	out	0x3e, r29	; 62
+  36:	cd bf       	out	0x3d, r28	; 61
+
+00000038 <__do_clear_bss>:
+  38:	20 e0       	ldi	r18, 0x00	; 0
+  3a:	a0 e6       	ldi	r26, 0x60	; 96
+  3c:	b0 e0       	ldi	r27, 0x00	; 0
+  3e:	01 c0       	rjmp	.+2      	; 0x42 <.do_clear_bss_start>
+
+00000040 <.do_clear_bss_loop>:
+  40:	1d 92       	st	X+, r1
+
+00000042 <.do_clear_bss_start>:
+  42:	a7 37       	cpi	r26, 0x77	; 119
+  44:	b2 07       	cpc	r27, r18
+  46:	e1 f7       	brne	.-8      	; 0x40 <.do_clear_bss_loop>
+
+00000048 <__do_global_ctors>:
+  48:	10 e0       	ldi	r17, 0x00	; 0
+  4a:	c6 e1       	ldi	r28, 0x16	; 22
+  4c:	d0 e0       	ldi	r29, 0x00	; 0
+  4e:	03 c0       	rjmp	.+6      	; 0x56 <__do_global_ctors+0xe>
+  50:	21 97       	sbiw	r28, 0x01	; 1
+  52:	fe 01       	movw	r30, r28
+  54:	b2 d4       	rcall	.+2404   	; 0x9ba <__tablejump2__>
+  56:	c5 31       	cpi	r28, 0x15	; 21
+  58:	d1 07       	cpc	r29, r17
+  5a:	d1 f7       	brne	.-12     	; 0x50 <__do_global_ctors+0x8>
+  5c:	43 d0       	rcall	.+134    	; 0xe4 <main>
+  5e:	b3 c4       	rjmp	.+2406   	; 0x9c6 <_exit>
+
+00000060 <__bad_interrupt>:
+  60:	cf cf       	rjmp	.-98     	; 0x0 <__vectors>
+
+00000062 <_Z15port_initializev>:
+#include "termoreg.h"
+#include <avr/interrupt.h>
+
+void port_initialize(void)                 /* Иниализация портов ввода-вывода */
+{
+	PORTA |=  (1 << PA1) | (1 << PA2) | (1 << PA3) | (1 << PA4) | (1 << PA5) | (1 << PA6) | (1 << PA7); // PA1 - PA7 как вход c подтяжкой
+  62:	8b b3       	in	r24, 0x1b	; 27
+  64:	8e 6f       	ori	r24, 0xFE	; 254
+  66:	8b bb       	out	0x1b, r24	; 27
+	PORTA &= ~(1 << PA0);                                                                               // PA0 как вход без подтяжки
+  68:	d8 98       	cbi	0x1b, 0	; 27
+	DDRA  = 0x00;                                                                                       // Установка всех ножек PA на вход
+  6a:	1a ba       	out	0x1a, r1	; 26
+	
+	PORTB = 0xFF;                                                                                       // Установка подтяжек всех ножек PB
+  6c:	8f ef       	ldi	r24, 0xFF	; 255
+  6e:	88 bb       	out	0x18, r24	; 24
+	DDRB  = 0x00;                                                                                       // Установка всех ножек PB на вход
+  70:	17 ba       	out	0x17, r1	; 23
+	
+	PORTD |=   (1 << PD0) | (1 << PD1) | (1 << PD2) | (1 << PD3);                                       // PD0 - PD3 как вход сподтяжкой
+  72:	82 b3       	in	r24, 0x12	; 18
+  74:	8f 60       	ori	r24, 0x0F	; 15
+  76:	82 bb       	out	0x12, r24	; 18
+	PORTD &= ~((1 << PD4) | (1 << PD5) | (1 << PD6) | (1 << PD7));                                      // PD4 - PD7 как выход
+  78:	82 b3       	in	r24, 0x12	; 18
+  7a:	8f 70       	andi	r24, 0x0F	; 15
+  7c:	82 bb       	out	0x12, r24	; 18
+	DDRD  |=   (1 << PD4) | (1 << PD5) | (1 << PD6) | (1 << PD7);                                       // PD4 - PD7 выход
+  7e:	81 b3       	in	r24, 0x11	; 17
+  80:	80 6f       	ori	r24, 0xF0	; 240
+  82:	81 bb       	out	0x11, r24	; 17
+	DDRD  &= ~((1 << PD0) | (1 << PD1) | (1 << PD2) | (1 << PD3));                                      // PD0 - PD3 как вход
+  84:	81 b3       	in	r24, 0x11	; 17
+  86:	80 7f       	andi	r24, 0xF0	; 240
+  88:	81 bb       	out	0x11, r24	; 17
+	
+	PORTC |=   (1 << PC0) | (1 << PC1) | (1 << PC2) | (1 << PC7);                                       // PC0 - PC2, PC7 как вход с подтяжкой
+  8a:	85 b3       	in	r24, 0x15	; 21
+  8c:	87 68       	ori	r24, 0x87	; 135
+  8e:	85 bb       	out	0x15, r24	; 21
+	PORTC &= ~((1 << PC3) | (1 << PC4) | (1 << PC5) | (1 << PC6));                                      // PC3 - PC6 как выход
+  90:	85 b3       	in	r24, 0x15	; 21
+  92:	87 78       	andi	r24, 0x87	; 135
+  94:	85 bb       	out	0x15, r24	; 21
+	DDRC  |=   (1 << PC3) | (1 << PC4) | (1 << PC5) | (1 << PC6);                                       // PC3 - PC6 как выход
+  96:	84 b3       	in	r24, 0x14	; 20
+  98:	88 67       	ori	r24, 0x78	; 120
+  9a:	84 bb       	out	0x14, r24	; 20
+	DDRC  &= ~((1 << PC0) | (1 << PC1) | (1 << PC2) | (1 << PC7));                                      // PC0 - PC2, PC7 как вход
+  9c:	84 b3       	in	r24, 0x14	; 20
+  9e:	88 77       	andi	r24, 0x78	; 120
+  a0:	84 bb       	out	0x14, r24	; 20
+  a2:	08 95       	ret
+
+000000a4 <_Z14ADC_initializev>:
+
+void ADC_initialize(void)                  /* Инициализация АЦП */
+{
+	ADCSRA = (1 << ADEN)                     // Разрешение работы АЦП
+	|(0 << ADATE)                            // Одиночный режим работы (разряд 5 ADFR в русском даташите)
+	|(1 << ADPS2)|(1 << ADPS1)|(1 << ADPS0); // Делитель синхронизации работы АЦП на 128 (выбран максимальный делитель для снижения нагрузки)
+  a4:	87 e8       	ldi	r24, 0x87	; 135
+  a6:	86 b9       	out	0x06, r24	; 6
+	ADMUX = (1 << REFS0);                    // Опорное напряжение AVCC
+  a8:	80 e4       	ldi	r24, 0x40	; 64
+  aa:	87 b9       	out	0x07, r24	; 7
+  ac:	08 95       	ret
+
+000000ae <_Z31externalInterruption_initializev>:
+} // конец ADC_initialize()
+
+void externalInterruption_initialize(void) /* Инициализация внешних прерываний для статуса вентияляторов AF00 */
+{
+	MCUCR = (1 << ISC11)|(1 << ISC10)        // Установка прерывания по переднему фронту INT1
+	|(1 << ISC01)|(1 << ISC00);              // Установка прерывания по переднему фронту INT0
+  ae:	8f e0       	ldi	r24, 0x0F	; 15
+  b0:	85 bf       	out	0x35, r24	; 53
+  b2:	08 95       	ret
+
+000000b4 <_Z10WDT_enablev>:
+	// ВАЖНО: В русском даташите регистр таймера ОШИБОЧЕН с.48 MCUCR -> WDTCR (MCUCR регистр внешнх прерываний)
+	
+	/*То, в какой последовательности записывать биты в регистр, имеет значение
+	Следуем рекомендациям для "уровня безопасности 2" на с.50 (В данном уровне отключение таймера НЕВОЗМОЖНО)
+	*/
+	cli();                                            // Запрещаем прерывания
+  b4:	f8 94       	cli
+	WDTCR = (1 << WDCE)                               // Разрешаем изменение периода сторожевого таймера
+	|(1 << WDE);                                      // Разрешение работы сторожевого таймера
+  b6:	88 e1       	ldi	r24, 0x18	; 24
+  b8:	81 bd       	out	0x21, r24	; 33
+	WDTCR |= (1 << WDP2) | (1 << WDP1) | (1 << WDP0); // Устанавливаем сброс по истечению 4.2 секунды
+  ba:	81 b5       	in	r24, 0x21	; 33
+  bc:	87 60       	ori	r24, 0x07	; 7
+  be:	81 bd       	out	0x21, r24	; 33
+	WDTCR &= ~(1 << WDCE);                            // Запрещаем изменение периода сторожевого таймера
+  c0:	81 b5       	in	r24, 0x21	; 33
+  c2:	8f 7e       	andi	r24, 0xEF	; 239
+  c4:	81 bd       	out	0x21, r24	; 33
+  c6:	08 95       	ret
+
+000000c8 <_Z19counter0_initializev>:
+} // конец WDT_enable()
+
+void counter0_initialize(void) /* Инициализация таймера-счётчика 0 */
+{
+	TCCR0 = (1 << WGM01)        // Включаем режим СТС - сброс по совпадению
+	|(1 << CS02) | (1 << CS00); // Включаем максимальный делитель на 1024
+  c8:	8d e0       	ldi	r24, 0x0D	; 13
+  ca:	83 bf       	out	0x33, r24	; 51
+	OCR0 = 194;                 // Записываем число в регистр сравнения
+  cc:	82 ec       	ldi	r24, 0xC2	; 194
+  ce:	8c bf       	out	0x3c, r24	; 60
+	/* формула на с.80 русского даташита:
+	при делителе 1024, OCR0 = 194, F_CPU = 4МГЦ счётчик будет работать с периодом примерно 100 мс */
+	TIMSK |= (1 << OCIE0);      // Разрешить прерывание по совпадению
+  d0:	89 b7       	in	r24, 0x39	; 57
+  d2:	82 60       	ori	r24, 0x02	; 2
+  d4:	89 bf       	out	0x39, r24	; 57
+  d6:	08 95       	ret
+
+000000d8 <_Z14gettemperaturev>:
+	/*
+	АЦП в режиме одиночного преобразования, частота синхронизыции = 31250 кГц
+	Результат записывается в 8ми битные регистры ADCH ADCL (c.217 русского даташита),
+	однако эти регистры доступны как один 16ти битный ADC
+	*/
+	ADCSRA |= (1 << ADSC);             // Запуск преобразования. ADSC сбросится аппаратно в 0 после преобразования
+  d8:	36 9a       	sbi	0x06, 6	; 6
+	while (ADCSRA & (1 << ADSC)){};    // Ждём окончания преобразования : 13 тактов = 3.25 мкс
+  da:	36 99       	sbic	0x06, 6	; 6
+  dc:	fe cf       	rjmp	.-4      	; 0xda <_Z14gettemperaturev+0x2>
+	return (int)ADC;                   // Возвращаем результат из регистров ADCH и ADCL
+  de:	84 b1       	in	r24, 0x04	; 4
+  e0:	95 b1       	in	r25, 0x05	; 5
+}// конец int gettemperature()
+  e2:	08 95       	ret
+
+000000e4 <main>:
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+  e4:	00 e7       	ldi	r16, 0x70	; 112
+  e6:	10 e0       	ldi	r17, 0x00	; 0
+  e8:	dd 24       	eor	r13, r13
+  ea:	d3 94       	inc	r13
+  ec:	0f 2e       	mov	r0, r31
+  ee:	fb e6       	ldi	r31, 0x6B	; 107
+  f0:	ef 2e       	mov	r14, r31
+  f2:	f0 e0       	ldi	r31, 0x00	; 0
+  f4:	ff 2e       	mov	r15, r31
+  f6:	f0 2d       	mov	r31, r0
+
+	void reset(void){flagTimer_ = true;}
+	void start(unsigned int endTime)                             // Метод начала отсчёта
+	{
+		
+		if(flagTimer_)                                       // Если флаг таймера поднят, запоминаем время начала отсчёта:
+  f8:	c0 e6       	ldi	r28, 0x60	; 96
+  fa:	d0 e0       	ldi	r29, 0x00	; 0
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+  fc:	68 94       	set
+  fe:	cc 24       	eor	r12, r12
+ 100:	c1 f8       	bld	r12, 1
+						{
+							if (fan2.getStatFeedback() == Fan::normal)
+							{           // Смотрим состояние
+								led_N2.blink(Led::LED_N2);
+								led_A2.disable(Led::LED_A2);
+								stateWork = STATE_WAIT_HOLD;
+ 102:	68 94       	set
+ 104:	aa 24       	eor	r10, r10
+ 106:	a2 f8       	bld	r10, 2
+				{
+					led_N2.disable(Led::LED_N2);
+					led_A2.enable(Led::LED_A2);
+				}
+				timer.reset();
+				stateWork = STATE_WAIT_HEAT;
+ 108:	0f 2e       	mov	r0, r31
+ 10a:	f3 e0       	ldi	r31, 0x03	; 3
+ 10c:	bf 2e       	mov	r11, r31
+ 10e:	f0 2d       	mov	r31, r0
+			led_A1.enable(Led::LED_A1);
+			led_A2.enable(Led::LED_A2);
+			standType = PINA & (1 << PA6) ? STAND52_54 : STAND51;                // Если в PA6(JMP1) еденица - стойка 52/54, иначе стойка 51
+			fan1.setType(PINA & (1 << PA7) ?  Fan::FAN_AR00  : Fan::FAN_AF00);   // Если в PA7(JMP2) еденица - вентилятор AR00, иначе AF00
+			fan2.setType(fan2.getType());
+			if (fan1.getType() == Fan::FAN_AF00) GICR = (1 << INT1)|(1 << INT0); // Разрешение прерываний INT1 и INT0 для получения сигналов SFAN1 и SFAN2
+ 110:	0f 2e       	mov	r0, r31
+ 112:	f0 ec       	ldi	r31, 0xC0	; 192
+ 114:	9f 2e       	mov	r9, r31
+ 116:	f0 2d       	mov	r31, r0
+int main(void)
+{
+	while (1)
+	{
+		wdt_reset();
+		switch(stateWork)                                               // Выбор текущего статуса работы
+ 118:	80 91 76 00 	lds	r24, 0x0076	; 0x800076 <stateWork>
+
+int main(void)
+{
+	while (1)
+	{
+		wdt_reset();
+ 11c:	a8 95       	wdr
+		switch(stateWork)                                               // Выбор текущего статуса работы
+ 11e:	82 30       	cpi	r24, 0x02	; 2
+ 120:	09 f4       	brne	.+2      	; 0x124 <main+0x40>
+ 122:	4d c0       	rjmp	.+154    	; 0x1be <main+0xda>
+ 124:	28 f4       	brcc	.+10     	; 0x130 <main+0x4c>
+ 126:	88 23       	and	r24, r24
+ 128:	51 f0       	breq	.+20     	; 0x13e <main+0x5a>
+ 12a:	81 30       	cpi	r24, 0x01	; 1
+ 12c:	b9 f1       	breq	.+110    	; 0x19c <main+0xb8>
+ 12e:	f6 cf       	rjmp	.-20     	; 0x11c <main+0x38>
+ 130:	83 30       	cpi	r24, 0x03	; 3
+ 132:	09 f4       	brne	.+2      	; 0x136 <main+0x52>
+ 134:	54 c1       	rjmp	.+680    	; 0x3de <__stack+0x17f>
+ 136:	84 30       	cpi	r24, 0x04	; 4
+ 138:	09 f4       	brne	.+2      	; 0x13c <main+0x58>
+ 13a:	53 c2       	rjmp	.+1190   	; 0x5e2 <__LOCK_REGION_LENGTH__+0x1e2>
+ 13c:	ef cf       	rjmp	.-34     	; 0x11c <main+0x38>
+		{
+			case STATE_INITIALIZE:/*--------------------------- Статус "ИНИЦИАЛИЗАЦИЯ" --------------------------------------------------*/
+			cli();
+ 13e:	f8 94       	cli
+			port_initialize();                                      // Инициализируем порты ввода-вывода
+ 140:	90 df       	rcall	.-224    	; 0x62 <_Z15port_initializev>
+			ADC_initialize();                                       // Инициализируем АЦП на еденичное преобразование
+ 142:	b0 df       	rcall	.-160    	; 0xa4 <_Z14ADC_initializev>
+			externalInterruption_initialize();                      // Инициализируем внешние прерывания для чтения статуса вентилятора AF00
+ 144:	b4 df       	rcall	.-152    	; 0xae <_Z31externalInterruption_initializev>
+			counter0_initialize();                                  // Инициализируем и запускаем таймер-счётчик 0
+ 146:	c0 df       	rcall	.-128    	; 0xc8 <_Z19counter0_initializev>
+			WDT_enable();                                           // Запускаем сторожевой таймер по алгоритму "уровня безопасности 2"
+ 148:	b5 df       	rcall	.-150    	; 0xb4 <_Z10WDT_enablev>
+			sei();
+ 14a:	78 94       	sei
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 14c:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+ 150:	96 9a       	sbi	0x12, 6	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 152:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+ 156:	97 9a       	sbi	0x12, 7	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 158:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+ 15c:	94 9a       	sbi	0x12, 4	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 15e:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+			break;
+			case LED_A2: PORTD |=  (1 << PD5);
+ 162:	95 9a       	sbi	0x12, 5	; 18
+			sei();
+			led_N1.enable(Led::LED_N1);                                          // Включаем все всетодиоды
+			led_N2.enable(Led::LED_N2);
+			led_A1.enable(Led::LED_A1);
+			led_A2.enable(Led::LED_A2);
+			standType = PINA & (1 << PA6) ? STAND52_54 : STAND51;                // Если в PA6(JMP1) еденица - стойка 52/54, иначе стойка 51
+ 164:	89 b3       	in	r24, 0x19	; 25
+ 166:	86 fb       	bst	r24, 6
+ 168:	88 27       	eor	r24, r24
+ 16a:	80 f9       	bld	r24, 0
+ 16c:	80 93 75 00 	sts	0x0075, r24	; 0x800075 <standType>
+			fan1.setType(PINA & (1 << PA7) ?  Fan::FAN_AR00  : Fan::FAN_AF00);   // Если в PA7(JMP2) еденица - вентилятор AR00, иначе AF00
+ 170:	89 b3       	in	r24, 0x19	; 25
+ 172:	80 95       	com	r24
+ 174:	88 1f       	adc	r24, r24
+ 176:	88 27       	eor	r24, r24
+ 178:	88 1f       	adc	r24, r24
+	typedef enum {enable_fan,disable_fan,}stateWorkFan;             /* Возможные состояния вентиляторов */
+	typedef enum {fail,normal,}stateFeedbackFan;                    /* Статус вентиляторов */
+	typedef enum{FAN_AR00,FAN_AF00,}typeFan;                        /* Типы вентиляторов */
+	typedef enum {FAN1,FAN2} numberFan;
+
+	void setType(typeFan type) {this->type_ = type;} // Устанавливает тип вентилятора
+ 17a:	f8 01       	movw	r30, r16
+ 17c:	80 83       	st	Z, r24
+			led_A1.enable(Led::LED_A1);
+			led_A2.enable(Led::LED_A2);
+			standType = PINA & (1 << PA6) ? STAND52_54 : STAND51;                // Если в PA6(JMP1) еденица - стойка 52/54, иначе стойка 51
+			fan1.setType(PINA & (1 << PA7) ?  Fan::FAN_AR00  : Fan::FAN_AF00);   // Если в PA7(JMP2) еденица - вентилятор AR00, иначе AF00
+			fan2.setType(fan2.getType());
+			if (fan1.getType() == Fan::FAN_AF00) GICR = (1 << INT1)|(1 << INT0); // Разрешение прерываний INT1 и INT0 для получения сигналов SFAN1 и SFAN2
+ 17e:	81 30       	cpi	r24, 0x01	; 1
+ 180:	09 f4       	brne	.+2      	; 0x184 <main+0xa0>
+ 182:	9b be       	out	0x3b, r9	; 59
+Led led_A2;
+Time timer;
+
+
+int main(void)
+{
+ 184:	80 e3       	ldi	r24, 0x30	; 48
+ 186:	93 e6       	ldi	r25, 0x63	; 99
+ 188:	a3 e0       	ldi	r26, 0x03	; 3
+ 18a:	b0 e0       	ldi	r27, 0x00	; 0
+			led_A2.enable(Led::LED_A2);
+			standType = PINA & (1 << PA6) ? STAND52_54 : STAND51;                // Если в PA6(JMP1) еденица - стойка 52/54, иначе стойка 51
+			fan1.setType(PINA & (1 << PA7) ?  Fan::FAN_AR00  : Fan::FAN_AF00);   // Если в PA7(JMP2) еденица - вентилятор AR00, иначе AF00
+			fan2.setType(fan2.getType());
+			if (fan1.getType() == Fan::FAN_AF00) GICR = (1 << INT1)|(1 << INT0); // Разрешение прерываний INT1 и INT0 для получения сигналов SFAN1 и SFAN2
+			delay_ms(1000);
+ 18c:	00 00       	nop
+ 18e:	01 97       	sbiw	r24, 0x01	; 1
+ 190:	a1 09       	sbc	r26, r1
+ 192:	b1 09       	sbc	r27, r1
+ 194:	d9 f7       	brne	.-10     	; 0x18c <main+0xa8>
+			stateWork = STATE_WAIT_SOLUTION_TURN;                                // Переход в состояние ожидания разрешения включения вентиляторов
+ 196:	d0 92 76 00 	sts	0x0076, r13	; 0x800076 <stateWork>
+			break; // конец case STATE_INITIALIZE:
+ 19a:	be cf       	rjmp	.-132    	; 0x118 <main+0x34>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 19c:	d0 92 6a 00 	sts	0x006A, r13	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+ 1a0:	96 98       	cbi	0x12, 6	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 1a2:	d0 92 69 00 	sts	0x0069, r13	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+ 1a6:	97 98       	cbi	0x12, 7	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 1a8:	d0 92 68 00 	sts	0x0068, r13	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+ 1ac:	94 98       	cbi	0x12, 4	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 1ae:	d0 92 67 00 	sts	0x0067, r13	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+			break;
+			case LED_A2: PORTD &=  ~(1 << PD5);
+ 1b2:	95 98       	cbi	0x12, 5	; 18
+			case STATE_WAIT_SOLUTION_TURN:/*------------------- Статус "ОЖИДАНИЕ РАЗРЕШЕНИЯ ВКЛЮЧЕНИЯ ВЕНТИЛЯТОРОВ" ------------------------*/
+			led_N1.disable(Led::LED_N1);                                          // Включаем все всетодиоды
+			led_N2.disable(Led::LED_N2);
+			led_A1.disable(Led::LED_A1);
+			led_A2.disable(Led::LED_A2);
+			if(PINC & (1 << PC2)) stateWork = STATE_DIAGNOSTICS;   // Если на PC2 (ON) еденица - переход в режим самодиагностики
+ 1b4:	9a 9b       	sbis	0x13, 2	; 19
+ 1b6:	b0 cf       	rjmp	.-160    	; 0x118 <main+0x34>
+ 1b8:	c0 92 76 00 	sts	0x0076, r12	; 0x800076 <stateWork>
+ 1bc:	ad cf       	rjmp	.-166    	; 0x118 <main+0x34>
+			break;  // конец case STATE_WAIT_SOLUTION_TURN:
+			
+			case STATE_DIAGNOSTICS:/*--------------------------- Статус "САМОДИАГНОСТИКА" ---------------------------------------------------*/
+			if (standType == STAND51) //-------------------        Для стойки 51
+ 1be:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <standType>
+ 1c2:	81 11       	cpse	r24, r1
+ 1c4:	7d c0       	rjmp	.+250    	; 0x2c0 <__stack+0x61>
+
+	void reset(void){flagTimer_ = true;}
+	void start(unsigned int endTime)                             // Метод начала отсчёта
+	{
+		
+		if(flagTimer_)                                       // Если флаг таймера поднят, запоминаем время начала отсчёта:
+ 1c6:	8c 81       	ldd	r24, Y+4	; 0x04
+ 1c8:	88 23       	and	r24, r24
+ 1ca:	31 f0       	breq	.+12     	; 0x1d8 <main+0xf4>
+		{
+			startTime_ = globalTime_;                            // Запоминаем текущее время
+ 1cc:	88 81       	ld	r24, Y
+ 1ce:	99 81       	ldd	r25, Y+1	; 0x01
+ 1d0:	9b 83       	std	Y+3, r25	; 0x03
+ 1d2:	8a 83       	std	Y+2, r24	; 0x02
+			flagTimer_ = false;                              // Опускаем флаг таймера, начинаем считать:
+ 1d4:	1c 82       	std	Y+4, r1	; 0x04
+ 1d6:	34 c0       	rjmp	.+104    	; 0x240 <main+0x15c>
+		}
+		else                                                 // Если флаг таймера опущен
+		{
+			if (startTime_ + endTime > MAXTIME )                   // Суммарное время превышает максимальное число таймера
+ 1d8:	8a 81       	ldd	r24, Y+2	; 0x02
+ 1da:	9b 81       	ldd	r25, Y+3	; 0x03
+ 1dc:	9c 01       	movw	r18, r24
+ 1de:	28 57       	subi	r18, 0x78	; 120
+ 1e0:	3c 4e       	sbci	r19, 0xEC	; 236
+ 1e2:	2d 3f       	cpi	r18, 0xFD	; 253
+ 1e4:	f9 ee       	ldi	r31, 0xE9	; 233
+ 1e6:	3f 07       	cpc	r19, r31
+ 1e8:	00 f1       	brcs	.+64     	; 0x22a <main+0x146>
+			{
+				timeTimer_ = globalTime_ <= MAXTIME ? globalTime_ - startTime_: MAXTIME - startTime_ + globalTime_;
+ 1ea:	48 81       	ld	r20, Y
+ 1ec:	59 81       	ldd	r21, Y+1	; 0x01
+ 1ee:	4d 3f       	cpi	r20, 0xFD	; 253
+ 1f0:	29 ee       	ldi	r18, 0xE9	; 233
+ 1f2:	52 07       	cpc	r21, r18
+ 1f4:	20 f4       	brcc	.+8      	; 0x1fe <main+0x11a>
+ 1f6:	9a 01       	movw	r18, r20
+ 1f8:	28 1b       	sub	r18, r24
+ 1fa:	39 0b       	sbc	r19, r25
+ 1fc:	05 c0       	rjmp	.+10     	; 0x208 <main+0x124>
+ 1fe:	9a 01       	movw	r18, r20
+ 200:	24 50       	subi	r18, 0x04	; 4
+ 202:	36 41       	sbci	r19, 0x16	; 22
+ 204:	28 1b       	sub	r18, r24
+ 206:	39 0b       	sbc	r19, r25
+ 208:	3e 83       	std	Y+6, r19	; 0x06
+ 20a:	2d 83       	std	Y+5, r18	; 0x05
+				if (globalTime_ == startTime_ - (MAXTIME -  endTime) ) // Делаем поправку, переводя время окончания на начало часов
+ 20c:	60 e0       	ldi	r22, 0x00	; 0
+ 20e:	70 e0       	ldi	r23, 0x00	; 0
+ 210:	a0 e0       	ldi	r26, 0x00	; 0
+ 212:	b0 e0       	ldi	r27, 0x00	; 0
+ 214:	84 57       	subi	r24, 0x74	; 116
+ 216:	96 4d       	sbci	r25, 0xD6	; 214
+ 218:	a1 09       	sbc	r26, r1
+ 21a:	b1 09       	sbc	r27, r1
+ 21c:	48 17       	cp	r20, r24
+ 21e:	59 07       	cpc	r21, r25
+ 220:	6a 07       	cpc	r22, r26
+ 222:	7b 07       	cpc	r23, r27
+ 224:	69 f4       	brne	.+26     	; 0x240 <main+0x15c>
+				{
+					flagTimer_ = true;                       // Поднимаем флажок для запоминания следующего времени
+ 226:	dc 82       	std	Y+4, r13	; 0x04
+ 228:	0b c0       	rjmp	.+22     	; 0x240 <main+0x15c>
+				}
+			}
+			else
+			{
+				timeTimer_ = globalTime_ - startTime_;
+ 22a:	48 81       	ld	r20, Y
+ 22c:	59 81       	ldd	r21, Y+1	; 0x01
+ 22e:	ba 01       	movw	r22, r20
+ 230:	68 1b       	sub	r22, r24
+ 232:	79 0b       	sbc	r23, r25
+ 234:	7e 83       	std	Y+6, r23	; 0x06
+ 236:	6d 83       	std	Y+5, r22	; 0x05
+				if (globalTime_ == startTime_ + endTime) flagTimer_ = true;      // Если время окончания отсчёта не превышает максимум часов и отсчитали установленное время
+ 238:	24 17       	cp	r18, r20
+ 23a:	35 07       	cpc	r19, r21
+ 23c:	09 f4       	brne	.+2      	; 0x240 <main+0x15c>
+ 23e:	dc 82       	std	Y+4, r13	; 0x04
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 240:	f8 01       	movw	r30, r16
+ 242:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+ 244:	ab 9a       	sbi	0x15, 3	; 21
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 246:	f7 01       	movw	r30, r14
+ 248:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+		else PORTC |=  (1 << PC4);
+ 24a:	ac 9a       	sbi	0x15, 4	; 21
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+ 24c:	c0 92 6a 00 	sts	0x006A, r12	; 0x80006a <led_N1>
+ 250:	c0 92 69 00 	sts	0x0069, r12	; 0x800069 <led_N2>
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 254:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+ 258:	94 9a       	sbi	0x12, 4	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 25a:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+			break;
+			case LED_A2: PORTD |=  (1 << PD5);
+ 25e:	95 9a       	sbi	0x12, 5	; 18
+				fan2.enable(Fan::FAN2);
+				led_N1.blink(Led::LED_N1);                     // LED_N1 моргает
+				led_N2.blink(Led::LED_N2);                     // LED_N2 моргает
+				led_A1.enable(Led::LED_A1);                    // LED_А1 горит
+				led_A2.enable(Led::LED_A2);                    // LED_А2 горит
+				if (timer.endTimer())
+ 260:	8c 81       	ldd	r24, Y+4	; 0x04
+ 262:	88 23       	and	r24, r24
+ 264:	09 f4       	brne	.+2      	; 0x268 <__stack+0x9>
+ 266:	58 cf       	rjmp	.-336    	; 0x118 <main+0x34>
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 268:	f8 01       	movw	r30, r16
+ 26a:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+ 26c:	ab 98       	cbi	0x15, 3	; 21
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 26e:	f7 01       	movw	r30, r14
+ 270:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+		else PORTC &= ~(1 << PC4);
+ 272:	ac 98       	cbi	0x15, 4	; 21
+				led_A2.enable(Led::LED_A2);                    // LED_А2 горит
+				if (timer.endTimer())
+				{
+					fan1.disable(Fan::FAN1);                   // Отключили все вентиляторы
+					fan2.disable(Fan::FAN2);
+					if (fan1.getStatFeedback() == Fan::normal) // Смотрим состояние
+ 274:	f8 01       	movw	r30, r16
+ 276:	81 81       	ldd	r24, Z+1	; 0x01
+ 278:	81 30       	cpi	r24, 0x01	; 1
+ 27a:	39 f4       	brne	.+14     	; 0x28a <__stack+0x2b>
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 27c:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+ 280:	96 9a       	sbi	0x12, 6	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 282:	d0 92 68 00 	sts	0x0068, r13	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+ 286:	94 98       	cbi	0x12, 4	; 18
+ 288:	06 c0       	rjmp	.+12     	; 0x296 <__stack+0x37>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 28a:	d0 92 6a 00 	sts	0x006A, r13	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+ 28e:	96 98       	cbi	0x12, 6	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 290:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+ 294:	94 9a       	sbi	0x12, 4	; 18
+					else
+					{
+						led_N1.disable(Led::LED_N1);
+						led_A1.enable(Led::LED_A1);
+					}
+					if (fan2.getStatFeedback() == Fan::normal)
+ 296:	f7 01       	movw	r30, r14
+ 298:	81 81       	ldd	r24, Z+1	; 0x01
+ 29a:	81 30       	cpi	r24, 0x01	; 1
+ 29c:	39 f4       	brne	.+14     	; 0x2ac <__stack+0x4d>
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 29e:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+ 2a2:	97 9a       	sbi	0x12, 7	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 2a4:	d0 92 67 00 	sts	0x0067, r13	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+			break;
+			case LED_A2: PORTD &=  ~(1 << PD5);
+ 2a8:	95 98       	cbi	0x12, 5	; 18
+ 2aa:	06 c0       	rjmp	.+12     	; 0x2b8 <__stack+0x59>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 2ac:	d0 92 69 00 	sts	0x0069, r13	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+ 2b0:	97 98       	cbi	0x12, 7	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 2b2:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+			break;
+			case LED_A2: PORTD |=  (1 << PD5);
+ 2b6:	95 9a       	sbi	0x12, 5	; 18
+	public:
+	void setGlobalTime(unsigned int globalTime) {this->globalTime_ = globalTime;} // Установка глобальных часов в прерывании таймера-счётчика0
+	unsigned int getGlobalTime(void)            {return globalTime_;}             // Метод получения текущего времени для его обновления в прерывании таймера-счётчика0
+	
+
+	void reset(void){flagTimer_ = true;}
+ 2b8:	dc 82       	std	Y+4, r13	; 0x04
+					{
+						led_N2.disable(Led::LED_N2);
+						led_A2.enable(Led::LED_A2);
+					}
+					timer.reset();
+					stateWork = STATE_WAIT_HEAT;        // 5 секунд теста окончены - переходим в состояние ожидания верхнего порога температуры
+ 2ba:	b0 92 76 00 	sts	0x0076, r11	; 0x800076 <stateWork>
+ 2be:	2c cf       	rjmp	.-424    	; 0x118 <main+0x34>
+
+	void reset(void){flagTimer_ = true;}
+	void start(unsigned int endTime)                             // Метод начала отсчёта
+	{
+		
+		if(flagTimer_)                                       // Если флаг таймера поднят, запоминаем время начала отсчёта:
+ 2c0:	8c 81       	ldd	r24, Y+4	; 0x04
+ 2c2:	88 23       	and	r24, r24
+ 2c4:	31 f0       	breq	.+12     	; 0x2d2 <__stack+0x73>
+		{
+			startTime_ = globalTime_;                            // Запоминаем текущее время
+ 2c6:	88 81       	ld	r24, Y
+ 2c8:	99 81       	ldd	r25, Y+1	; 0x01
+ 2ca:	9b 83       	std	Y+3, r25	; 0x03
+ 2cc:	8a 83       	std	Y+2, r24	; 0x02
+			flagTimer_ = false;                              // Опускаем флаг таймера, начинаем считать:
+ 2ce:	1c 82       	std	Y+4, r1	; 0x04
+ 2d0:	34 c0       	rjmp	.+104    	; 0x33a <__stack+0xdb>
+		}
+		else                                                 // Если флаг таймера опущен
+		{
+			if (startTime_ + endTime > MAXTIME )                   // Суммарное время превышает максимальное число таймера
+ 2d2:	8a 81       	ldd	r24, Y+2	; 0x02
+ 2d4:	9b 81       	ldd	r25, Y+3	; 0x03
+ 2d6:	9c 01       	movw	r18, r24
+ 2d8:	20 5f       	subi	r18, 0xF0	; 240
+ 2da:	38 4d       	sbci	r19, 0xD8	; 216
+ 2dc:	2d 3f       	cpi	r18, 0xFD	; 253
+ 2de:	f9 ee       	ldi	r31, 0xE9	; 233
+ 2e0:	3f 07       	cpc	r19, r31
+ 2e2:	00 f1       	brcs	.+64     	; 0x324 <__stack+0xc5>
+			{
+				timeTimer_ = globalTime_ <= MAXTIME ? globalTime_ - startTime_: MAXTIME - startTime_ + globalTime_;
+ 2e4:	48 81       	ld	r20, Y
+ 2e6:	59 81       	ldd	r21, Y+1	; 0x01
+ 2e8:	4d 3f       	cpi	r20, 0xFD	; 253
+ 2ea:	29 ee       	ldi	r18, 0xE9	; 233
+ 2ec:	52 07       	cpc	r21, r18
+ 2ee:	20 f4       	brcc	.+8      	; 0x2f8 <__stack+0x99>
+ 2f0:	9a 01       	movw	r18, r20
+ 2f2:	28 1b       	sub	r18, r24
+ 2f4:	39 0b       	sbc	r19, r25
+ 2f6:	05 c0       	rjmp	.+10     	; 0x302 <__stack+0xa3>
+ 2f8:	9a 01       	movw	r18, r20
+ 2fa:	24 50       	subi	r18, 0x04	; 4
+ 2fc:	36 41       	sbci	r19, 0x16	; 22
+ 2fe:	28 1b       	sub	r18, r24
+ 300:	39 0b       	sbc	r19, r25
+ 302:	3e 83       	std	Y+6, r19	; 0x06
+ 304:	2d 83       	std	Y+5, r18	; 0x05
+				if (globalTime_ == startTime_ - (MAXTIME -  endTime) ) // Делаем поправку, переводя время окончания на начало часов
+ 306:	60 e0       	ldi	r22, 0x00	; 0
+ 308:	70 e0       	ldi	r23, 0x00	; 0
+ 30a:	a0 e0       	ldi	r26, 0x00	; 0
+ 30c:	b0 e0       	ldi	r27, 0x00	; 0
+ 30e:	8c 5e       	subi	r24, 0xEC	; 236
+ 310:	92 4c       	sbci	r25, 0xC2	; 194
+ 312:	a1 09       	sbc	r26, r1
+ 314:	b1 09       	sbc	r27, r1
+ 316:	48 17       	cp	r20, r24
+ 318:	59 07       	cpc	r21, r25
+ 31a:	6a 07       	cpc	r22, r26
+ 31c:	7b 07       	cpc	r23, r27
+ 31e:	69 f4       	brne	.+26     	; 0x33a <__stack+0xdb>
+				{
+					flagTimer_ = true;                       // Поднимаем флажок для запоминания следующего времени
+ 320:	dc 82       	std	Y+4, r13	; 0x04
+ 322:	0b c0       	rjmp	.+22     	; 0x33a <__stack+0xdb>
+				}
+			}
+			else
+			{
+				timeTimer_ = globalTime_ - startTime_;
+ 324:	48 81       	ld	r20, Y
+ 326:	59 81       	ldd	r21, Y+1	; 0x01
+ 328:	ba 01       	movw	r22, r20
+ 32a:	68 1b       	sub	r22, r24
+ 32c:	79 0b       	sbc	r23, r25
+ 32e:	7e 83       	std	Y+6, r23	; 0x06
+ 330:	6d 83       	std	Y+5, r22	; 0x05
+				if (globalTime_ == startTime_ + endTime) flagTimer_ = true;      // Если время окончания отсчёта не превышает максимум часов и отсчитали установленное время
+ 332:	24 17       	cp	r18, r20
+ 334:	35 07       	cpc	r19, r21
+ 336:	09 f4       	brne	.+2      	; 0x33a <__stack+0xdb>
+ 338:	dc 82       	std	Y+4, r13	; 0x04
+			}
+		}
+		
+		
+	}
+	unsigned int getTimerTime(void) {return timeTimer_;}
+ 33a:	8d 81       	ldd	r24, Y+5	; 0x05
+ 33c:	9e 81       	ldd	r25, Y+6	; 0x06
+				}
+			} // конец STAND51
+			else//---------------------------------------------Стойка 52/54
+			{
+				timer.start(10000);
+				if (timer.getTimerTime() < 5000)
+ 33e:	88 38       	cpi	r24, 0x88	; 136
+ 340:	73 e1       	ldi	r23, 0x13	; 19
+ 342:	97 07       	cpc	r25, r23
+ 344:	90 f4       	brcc	.+36     	; 0x36a <__stack+0x10b>
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 346:	f8 01       	movw	r30, r16
+ 348:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+ 34a:	ab 9a       	sbi	0x15, 3	; 21
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 34c:	f7 01       	movw	r30, r14
+ 34e:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+		else PORTC &= ~(1 << PC4);
+ 350:	ac 98       	cbi	0x15, 4	; 21
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+ 352:	c0 92 6a 00 	sts	0x006A, r12	; 0x80006a <led_N1>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 356:	d0 92 69 00 	sts	0x0069, r13	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+ 35a:	97 98       	cbi	0x12, 7	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 35c:	d0 92 68 00 	sts	0x0068, r13	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+ 360:	94 98       	cbi	0x12, 4	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 362:	d0 92 67 00 	sts	0x0067, r13	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+			break;
+			case LED_A2: PORTD &=  ~(1 << PD5);
+ 366:	95 98       	cbi	0x12, 5	; 18
+ 368:	d7 ce       	rjmp	.-594    	; 0x118 <main+0x34>
+					led_N2.disable(Led::LED_N2);
+					led_A1.disable(Led::LED_A1);
+					led_A2.disable(Led::LED_A2);
+					
+				}
+				else if (timer.getTimerTime() == 5000)
+ 36a:	88 38       	cpi	r24, 0x88	; 136
+ 36c:	93 41       	sbci	r25, 0x13	; 19
+ 36e:	91 f4       	brne	.+36     	; 0x394 <__stack+0x135>
+				{
+					
+					if (fan1.getStatFeedback() == Fan::normal)
+ 370:	f8 01       	movw	r30, r16
+ 372:	81 81       	ldd	r24, Z+1	; 0x01
+ 374:	81 30       	cpi	r24, 0x01	; 1
+ 376:	39 f4       	brne	.+14     	; 0x386 <__stack+0x127>
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 378:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+ 37c:	96 9a       	sbi	0x12, 6	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 37e:	d0 92 68 00 	sts	0x0068, r13	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+ 382:	94 98       	cbi	0x12, 4	; 18
+ 384:	c9 ce       	rjmp	.-622    	; 0x118 <main+0x34>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 386:	d0 92 6a 00 	sts	0x006A, r13	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+ 38a:	96 98       	cbi	0x12, 6	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 38c:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+ 390:	94 9a       	sbi	0x12, 4	; 18
+ 392:	c2 ce       	rjmp	.-636    	; 0x118 <main+0x34>
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 394:	f8 01       	movw	r30, r16
+ 396:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+ 398:	ab 98       	cbi	0x15, 3	; 21
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 39a:	f7 01       	movw	r30, r14
+ 39c:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+		else PORTC |=  (1 << PC4);
+ 39e:	ac 9a       	sbi	0x15, 4	; 21
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+ 3a0:	c0 92 69 00 	sts	0x0069, r12	; 0x800069 <led_N2>
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 3a4:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+			break;
+			case LED_A2: PORTD |=  (1 << PD5);
+ 3a8:	95 9a       	sbi	0x12, 5	; 18
+				{                                    // 5 секунд теста вентилятора 1 истекло, тест вентилятора 2
+					fan1.disable(Fan::FAN1);
+					fan2.enable(Fan::FAN2);
+					led_N2.blink(Led::LED_N2);
+					led_A2.enable(Led::LED_A2);
+					if (timer.endTimer())
+ 3aa:	8c 81       	ldd	r24, Y+4	; 0x04
+ 3ac:	88 23       	and	r24, r24
+ 3ae:	09 f4       	brne	.+2      	; 0x3b2 <__stack+0x153>
+ 3b0:	b3 ce       	rjmp	.-666    	; 0x118 <main+0x34>
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 3b2:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+		else PORTC &= ~(1 << PC4);
+ 3b4:	ac 98       	cbi	0x15, 4	; 21
+					led_N2.blink(Led::LED_N2);
+					led_A2.enable(Led::LED_A2);
+					if (timer.endTimer())
+					{             // Вторые 5 секунд теста для вентилятора 2 истекло : смотрим результат
+						fan2.disable(Fan::FAN2);
+						if (fan2.getStatFeedback() == Fan::normal)
+ 3b6:	81 81       	ldd	r24, Z+1	; 0x01
+ 3b8:	81 30       	cpi	r24, 0x01	; 1
+ 3ba:	39 f4       	brne	.+14     	; 0x3ca <__stack+0x16b>
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 3bc:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+ 3c0:	97 9a       	sbi	0x12, 7	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 3c2:	d0 92 67 00 	sts	0x0067, r13	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+			break;
+			case LED_A2: PORTD &=  ~(1 << PD5);
+ 3c6:	95 98       	cbi	0x12, 5	; 18
+ 3c8:	06 c0       	rjmp	.+12     	; 0x3d6 <__stack+0x177>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 3ca:	d0 92 69 00 	sts	0x0069, r13	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+ 3ce:	97 98       	cbi	0x12, 7	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 3d0:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+			break;
+			case LED_A2: PORTD |=  (1 << PD5);
+ 3d4:	95 9a       	sbi	0x12, 5	; 18
+	public:
+	void setGlobalTime(unsigned int globalTime) {this->globalTime_ = globalTime;} // Установка глобальных часов в прерывании таймера-счётчика0
+	unsigned int getGlobalTime(void)            {return globalTime_;}             // Метод получения текущего времени для его обновления в прерывании таймера-счётчика0
+	
+
+	void reset(void){flagTimer_ = true;}
+ 3d6:	dc 82       	std	Y+4, r13	; 0x04
+						{
+							led_N2.disable(Led::LED_N2);
+							led_A2.enable(Led::LED_A2);
+						}
+						timer.reset();
+						stateWork = STATE_WAIT_HEAT;  // Суммарные 10 секунд теста окончены, преходим в состояня ожидания верхнего порога температуры
+ 3d8:	b0 92 76 00 	sts	0x0076, r11	; 0x800076 <stateWork>
+ 3dc:	9d ce       	rjmp	.-710    	; 0x118 <main+0x34>
+				}
+			}
+			break; // конец case STATE_DIAGNOSTICS:
+			
+			case STATE_WAIT_HEAT:/*----------------------------- Статус "ОЖИДАНИЕ ВЕРХНЕГО ПОРОГА ТЕМПЕРАТУРЫ" -----------------------------*/
+			if (gettemperature() >= highTemperature)       // Превысили верхний порог температуры
+ 3de:	7c de       	rcall	.-776    	; 0xd8 <_Z14gettemperaturev>
+ 3e0:	8d 3f       	cpi	r24, 0xFD	; 253
+ 3e2:	91 40       	sbci	r25, 0x01	; 1
+ 3e4:	0c f4       	brge	.+2      	; 0x3e8 <__stack+0x189>
+ 3e6:	f6 c0       	rjmp	.+492    	; 0x5d4 <__LOCK_REGION_LENGTH__+0x1d4>
+			{
+				if (standType == STAND51) // Для стойки 51
+ 3e8:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <standType>
+ 3ec:	81 11       	cpse	r24, r1
+ 3ee:	73 c0       	rjmp	.+230    	; 0x4d6 <__LOCK_REGION_LENGTH__+0xd6>
+
+	void reset(void){flagTimer_ = true;}
+	void start(unsigned int endTime)                             // Метод начала отсчёта
+	{
+		
+		if(flagTimer_)                                       // Если флаг таймера поднят, запоминаем время начала отсчёта:
+ 3f0:	8c 81       	ldd	r24, Y+4	; 0x04
+ 3f2:	88 23       	and	r24, r24
+ 3f4:	31 f0       	breq	.+12     	; 0x402 <__LOCK_REGION_LENGTH__+0x2>
+		{
+			startTime_ = globalTime_;                            // Запоминаем текущее время
+ 3f6:	88 81       	ld	r24, Y
+ 3f8:	99 81       	ldd	r25, Y+1	; 0x01
+ 3fa:	9b 83       	std	Y+3, r25	; 0x03
+ 3fc:	8a 83       	std	Y+2, r24	; 0x02
+			flagTimer_ = false;                              // Опускаем флаг таймера, начинаем считать:
+ 3fe:	1c 82       	std	Y+4, r1	; 0x04
+ 400:	34 c0       	rjmp	.+104    	; 0x46a <__LOCK_REGION_LENGTH__+0x6a>
+		}
+		else                                                 // Если флаг таймера опущен
+		{
+			if (startTime_ + endTime > MAXTIME )                   // Суммарное время превышает максимальное число таймера
+ 402:	8a 81       	ldd	r24, Y+2	; 0x02
+ 404:	9b 81       	ldd	r25, Y+3	; 0x03
+ 406:	ac 01       	movw	r20, r24
+ 408:	48 57       	subi	r20, 0x78	; 120
+ 40a:	5c 4e       	sbci	r21, 0xEC	; 236
+ 40c:	4d 3f       	cpi	r20, 0xFD	; 253
+ 40e:	29 ee       	ldi	r18, 0xE9	; 233
+ 410:	52 07       	cpc	r21, r18
+ 412:	00 f1       	brcs	.+64     	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+			{
+				timeTimer_ = globalTime_ <= MAXTIME ? globalTime_ - startTime_: MAXTIME - startTime_ + globalTime_;
+ 414:	48 81       	ld	r20, Y
+ 416:	59 81       	ldd	r21, Y+1	; 0x01
+ 418:	4d 3f       	cpi	r20, 0xFD	; 253
+ 41a:	69 ee       	ldi	r22, 0xE9	; 233
+ 41c:	56 07       	cpc	r21, r22
+ 41e:	20 f4       	brcc	.+8      	; 0x428 <__LOCK_REGION_LENGTH__+0x28>
+ 420:	9a 01       	movw	r18, r20
+ 422:	28 1b       	sub	r18, r24
+ 424:	39 0b       	sbc	r19, r25
+ 426:	05 c0       	rjmp	.+10     	; 0x432 <__LOCK_REGION_LENGTH__+0x32>
+ 428:	9a 01       	movw	r18, r20
+ 42a:	24 50       	subi	r18, 0x04	; 4
+ 42c:	36 41       	sbci	r19, 0x16	; 22
+ 42e:	28 1b       	sub	r18, r24
+ 430:	39 0b       	sbc	r19, r25
+ 432:	3e 83       	std	Y+6, r19	; 0x06
+ 434:	2d 83       	std	Y+5, r18	; 0x05
+				if (globalTime_ == startTime_ - (MAXTIME -  endTime) ) // Делаем поправку, переводя время окончания на начало часов
+ 436:	60 e0       	ldi	r22, 0x00	; 0
+ 438:	70 e0       	ldi	r23, 0x00	; 0
+ 43a:	a0 e0       	ldi	r26, 0x00	; 0
+ 43c:	b0 e0       	ldi	r27, 0x00	; 0
+ 43e:	84 57       	subi	r24, 0x74	; 116
+ 440:	96 4d       	sbci	r25, 0xD6	; 214
+ 442:	a1 09       	sbc	r26, r1
+ 444:	b1 09       	sbc	r27, r1
+ 446:	48 17       	cp	r20, r24
+ 448:	59 07       	cpc	r21, r25
+ 44a:	6a 07       	cpc	r22, r26
+ 44c:	7b 07       	cpc	r23, r27
+ 44e:	69 f4       	brne	.+26     	; 0x46a <__LOCK_REGION_LENGTH__+0x6a>
+				{
+					flagTimer_ = true;                       // Поднимаем флажок для запоминания следующего времени
+ 450:	dc 82       	std	Y+4, r13	; 0x04
+ 452:	0b c0       	rjmp	.+22     	; 0x46a <__LOCK_REGION_LENGTH__+0x6a>
+				}
+			}
+			else
+			{
+				timeTimer_ = globalTime_ - startTime_;
+ 454:	28 81       	ld	r18, Y
+ 456:	39 81       	ldd	r19, Y+1	; 0x01
+ 458:	f9 01       	movw	r30, r18
+ 45a:	e8 1b       	sub	r30, r24
+ 45c:	f9 0b       	sbc	r31, r25
+ 45e:	fe 83       	std	Y+6, r31	; 0x06
+ 460:	ed 83       	std	Y+5, r30	; 0x05
+				if (globalTime_ == startTime_ + endTime) flagTimer_ = true;      // Если время окончания отсчёта не превышает максимум часов и отсчитали установленное время
+ 462:	42 17       	cp	r20, r18
+ 464:	53 07       	cpc	r21, r19
+ 466:	09 f4       	brne	.+2      	; 0x46a <__LOCK_REGION_LENGTH__+0x6a>
+ 468:	dc 82       	std	Y+4, r13	; 0x04
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 46a:	f8 01       	movw	r30, r16
+ 46c:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+ 46e:	ab 9a       	sbi	0x15, 3	; 21
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 470:	f7 01       	movw	r30, r14
+ 472:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+		else PORTC |=  (1 << PC4);
+ 474:	ac 9a       	sbi	0x15, 4	; 21
+				if (standType == STAND51) // Для стойки 51
+				{
+					timer.start(5000);
+					fan1.enable(Fan::FAN1);                        // Включили все вентиляторы
+					fan2.enable(Fan::FAN2);
+					if (timer.endTimer())
+ 476:	8c 81       	ldd	r24, Y+4	; 0x04
+ 478:	88 23       	and	r24, r24
+ 47a:	09 f4       	brne	.+2      	; 0x47e <__LOCK_REGION_LENGTH__+0x7e>
+ 47c:	4d ce       	rjmp	.-870    	; 0x118 <main+0x34>
+					{
+						if (fan1.getStatFeedback() == Fan::normal) // Смотрим состояние
+ 47e:	f8 01       	movw	r30, r16
+ 480:	81 81       	ldd	r24, Z+1	; 0x01
+ 482:	81 30       	cpi	r24, 0x01	; 1
+ 484:	31 f4       	brne	.+12     	; 0x492 <__LOCK_REGION_LENGTH__+0x92>
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+ 486:	c0 92 6a 00 	sts	0x006A, r12	; 0x80006a <led_N1>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 48a:	d0 92 68 00 	sts	0x0068, r13	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+ 48e:	94 98       	cbi	0x12, 4	; 18
+ 490:	06 c0       	rjmp	.+12     	; 0x49e <__LOCK_REGION_LENGTH__+0x9e>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 492:	d0 92 6a 00 	sts	0x006A, r13	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+ 496:	96 98       	cbi	0x12, 6	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 498:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+ 49c:	94 9a       	sbi	0x12, 4	; 18
+						else
+						{
+							led_N1.disable(Led::LED_N1);
+							led_A1.enable(Led::LED_A1);
+						}
+						if (fan2.getStatFeedback() == Fan::normal)
+ 49e:	f7 01       	movw	r30, r14
+ 4a0:	81 81       	ldd	r24, Z+1	; 0x01
+ 4a2:	81 30       	cpi	r24, 0x01	; 1
+ 4a4:	31 f4       	brne	.+12     	; 0x4b2 <__LOCK_REGION_LENGTH__+0xb2>
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+ 4a6:	c0 92 69 00 	sts	0x0069, r12	; 0x800069 <led_N2>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 4aa:	d0 92 67 00 	sts	0x0067, r13	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+			break;
+			case LED_A2: PORTD &=  ~(1 << PD5);
+ 4ae:	95 98       	cbi	0x12, 5	; 18
+ 4b0:	06 c0       	rjmp	.+12     	; 0x4be <__LOCK_REGION_LENGTH__+0xbe>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 4b2:	d0 92 69 00 	sts	0x0069, r13	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+ 4b6:	97 98       	cbi	0x12, 7	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 4b8:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+			break;
+			case LED_A2: PORTD |=  (1 << PD5);
+ 4bc:	95 9a       	sbi	0x12, 5	; 18
+						else
+						{
+							led_N2.disable(Led::LED_N2);
+							led_A2.enable(Led::LED_A2);
+						}
+						if(fan1.getStatFeedback() == Fan::normal || fan2.getStatFeedback() == Fan::normal)stateWork = STATE_WAIT_HOLD;
+ 4be:	f8 01       	movw	r30, r16
+ 4c0:	81 81       	ldd	r24, Z+1	; 0x01
+ 4c2:	81 30       	cpi	r24, 0x01	; 1
+ 4c4:	29 f0       	breq	.+10     	; 0x4d0 <__LOCK_REGION_LENGTH__+0xd0>
+ 4c6:	f7 01       	movw	r30, r14
+ 4c8:	81 81       	ldd	r24, Z+1	; 0x01
+ 4ca:	81 30       	cpi	r24, 0x01	; 1
+ 4cc:	09 f0       	breq	.+2      	; 0x4d0 <__LOCK_REGION_LENGTH__+0xd0>
+ 4ce:	24 ce       	rjmp	.-952    	; 0x118 <main+0x34>
+ 4d0:	a0 92 76 00 	sts	0x0076, r10	; 0x800076 <stateWork>
+ 4d4:	21 ce       	rjmp	.-958    	; 0x118 <main+0x34>
+
+	void reset(void){flagTimer_ = true;}
+	void start(unsigned int endTime)                             // Метод начала отсчёта
+	{
+		
+		if(flagTimer_)                                       // Если флаг таймера поднят, запоминаем время начала отсчёта:
+ 4d6:	8c 81       	ldd	r24, Y+4	; 0x04
+ 4d8:	88 23       	and	r24, r24
+ 4da:	31 f0       	breq	.+12     	; 0x4e8 <__LOCK_REGION_LENGTH__+0xe8>
+		{
+			startTime_ = globalTime_;                            // Запоминаем текущее время
+ 4dc:	88 81       	ld	r24, Y
+ 4de:	99 81       	ldd	r25, Y+1	; 0x01
+ 4e0:	9b 83       	std	Y+3, r25	; 0x03
+ 4e2:	8a 83       	std	Y+2, r24	; 0x02
+			flagTimer_ = false;                              // Опускаем флаг таймера, начинаем считать:
+ 4e4:	1c 82       	std	Y+4, r1	; 0x04
+ 4e6:	34 c0       	rjmp	.+104    	; 0x550 <__LOCK_REGION_LENGTH__+0x150>
+		}
+		else                                                 // Если флаг таймера опущен
+		{
+			if (startTime_ + endTime > MAXTIME )                   // Суммарное время превышает максимальное число таймера
+ 4e8:	8a 81       	ldd	r24, Y+2	; 0x02
+ 4ea:	9b 81       	ldd	r25, Y+3	; 0x03
+ 4ec:	ac 01       	movw	r20, r24
+ 4ee:	40 5f       	subi	r20, 0xF0	; 240
+ 4f0:	58 4d       	sbci	r21, 0xD8	; 216
+ 4f2:	4d 3f       	cpi	r20, 0xFD	; 253
+ 4f4:	f9 ee       	ldi	r31, 0xE9	; 233
+ 4f6:	5f 07       	cpc	r21, r31
+ 4f8:	00 f1       	brcs	.+64     	; 0x53a <__LOCK_REGION_LENGTH__+0x13a>
+			{
+				timeTimer_ = globalTime_ <= MAXTIME ? globalTime_ - startTime_: MAXTIME - startTime_ + globalTime_;
+ 4fa:	48 81       	ld	r20, Y
+ 4fc:	59 81       	ldd	r21, Y+1	; 0x01
+ 4fe:	4d 3f       	cpi	r20, 0xFD	; 253
+ 500:	29 ee       	ldi	r18, 0xE9	; 233
+ 502:	52 07       	cpc	r21, r18
+ 504:	20 f4       	brcc	.+8      	; 0x50e <__LOCK_REGION_LENGTH__+0x10e>
+ 506:	9a 01       	movw	r18, r20
+ 508:	28 1b       	sub	r18, r24
+ 50a:	39 0b       	sbc	r19, r25
+ 50c:	05 c0       	rjmp	.+10     	; 0x518 <__LOCK_REGION_LENGTH__+0x118>
+ 50e:	9a 01       	movw	r18, r20
+ 510:	24 50       	subi	r18, 0x04	; 4
+ 512:	36 41       	sbci	r19, 0x16	; 22
+ 514:	28 1b       	sub	r18, r24
+ 516:	39 0b       	sbc	r19, r25
+ 518:	3e 83       	std	Y+6, r19	; 0x06
+ 51a:	2d 83       	std	Y+5, r18	; 0x05
+				if (globalTime_ == startTime_ - (MAXTIME -  endTime) ) // Делаем поправку, переводя время окончания на начало часов
+ 51c:	60 e0       	ldi	r22, 0x00	; 0
+ 51e:	70 e0       	ldi	r23, 0x00	; 0
+ 520:	a0 e0       	ldi	r26, 0x00	; 0
+ 522:	b0 e0       	ldi	r27, 0x00	; 0
+ 524:	8c 5e       	subi	r24, 0xEC	; 236
+ 526:	92 4c       	sbci	r25, 0xC2	; 194
+ 528:	a1 09       	sbc	r26, r1
+ 52a:	b1 09       	sbc	r27, r1
+ 52c:	48 17       	cp	r20, r24
+ 52e:	59 07       	cpc	r21, r25
+ 530:	6a 07       	cpc	r22, r26
+ 532:	7b 07       	cpc	r23, r27
+ 534:	69 f4       	brne	.+26     	; 0x550 <__LOCK_REGION_LENGTH__+0x150>
+				{
+					flagTimer_ = true;                       // Поднимаем флажок для запоминания следующего времени
+ 536:	dc 82       	std	Y+4, r13	; 0x04
+ 538:	0b c0       	rjmp	.+22     	; 0x550 <__LOCK_REGION_LENGTH__+0x150>
+				}
+			}
+			else
+			{
+				timeTimer_ = globalTime_ - startTime_;
+ 53a:	28 81       	ld	r18, Y
+ 53c:	39 81       	ldd	r19, Y+1	; 0x01
+ 53e:	b9 01       	movw	r22, r18
+ 540:	68 1b       	sub	r22, r24
+ 542:	79 0b       	sbc	r23, r25
+ 544:	7e 83       	std	Y+6, r23	; 0x06
+ 546:	6d 83       	std	Y+5, r22	; 0x05
+				if (globalTime_ == startTime_ + endTime) flagTimer_ = true;      // Если время окончания отсчёта не превышает максимум часов и отсчитали установленное время
+ 548:	42 17       	cp	r20, r18
+ 54a:	53 07       	cpc	r21, r19
+ 54c:	09 f4       	brne	.+2      	; 0x550 <__LOCK_REGION_LENGTH__+0x150>
+ 54e:	dc 82       	std	Y+4, r13	; 0x04
+			}
+		}
+		
+		
+	}
+	unsigned int getTimerTime(void) {return timeTimer_;}
+ 550:	8d 81       	ldd	r24, Y+5	; 0x05
+ 552:	9e 81       	ldd	r25, Y+6	; 0x06
+					}
+				}
+				else //------------------------------------------/Для стойки 52/54
+				{
+					timer.start(10000);
+					if (timer.getTimerTime() < 5000)
+ 554:	88 38       	cpi	r24, 0x88	; 136
+ 556:	73 e1       	ldi	r23, 0x13	; 19
+ 558:	97 07       	cpc	r25, r23
+ 55a:	38 f4       	brcc	.+14     	; 0x56a <__LOCK_REGION_LENGTH__+0x16a>
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 55c:	f8 01       	movw	r30, r16
+ 55e:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+ 560:	ab 9a       	sbi	0x15, 3	; 21
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 562:	f7 01       	movw	r30, r14
+ 564:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+		else PORTC &= ~(1 << PC4);
+ 566:	ac 98       	cbi	0x15, 4	; 21
+ 568:	d7 cd       	rjmp	.-1106   	; 0x118 <main+0x34>
+					{
+						fan1.enable(Fan::FAN1);
+						fan2.disable(Fan::FAN2);
+						
+					}
+					else if (timer.getTimerTime() == 5000)
+ 56a:	88 38       	cpi	r24, 0x88	; 136
+ 56c:	93 41       	sbci	r25, 0x13	; 19
+ 56e:	b1 f4       	brne	.+44     	; 0x59c <__LOCK_REGION_LENGTH__+0x19c>
+					{
+						
+						if (fan1.getStatFeedback() == Fan::normal)
+ 570:	f8 01       	movw	r30, r16
+ 572:	81 81       	ldd	r24, Z+1	; 0x01
+ 574:	81 30       	cpi	r24, 0x01	; 1
+ 576:	41 f4       	brne	.+16     	; 0x588 <__LOCK_REGION_LENGTH__+0x188>
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+ 578:	c0 92 6a 00 	sts	0x006A, r12	; 0x80006a <led_N1>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 57c:	d0 92 68 00 	sts	0x0068, r13	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+ 580:	94 98       	cbi	0x12, 4	; 18
+						
+						if (fan1.getStatFeedback() == Fan::normal)
+						{           // Смотрим состояние
+							led_N1.blink(Led::LED_N1);
+							led_A1.disable(Led::LED_A1);
+							stateWork = STATE_WAIT_HOLD;
+ 582:	a0 92 76 00 	sts	0x0076, r10	; 0x800076 <stateWork>
+ 586:	c8 cd       	rjmp	.-1136   	; 0x118 <main+0x34>
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 588:	f8 01       	movw	r30, r16
+ 58a:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+ 58c:	ab 98       	cbi	0x15, 3	; 21
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 58e:	d0 92 6a 00 	sts	0x006A, r13	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+ 592:	96 98       	cbi	0x12, 6	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 594:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+ 598:	94 9a       	sbi	0x12, 4	; 18
+ 59a:	be cd       	rjmp	.-1156   	; 0x118 <main+0x34>
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 59c:	f7 01       	movw	r30, r14
+ 59e:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+		else PORTC |=  (1 << PC4);
+ 5a0:	ac 9a       	sbi	0x15, 4	; 21
+						}
+					}
+					else
+					{                                    // 5 секунд теста вентилятора 1 истекло, тест вентилятора 2
+						fan2.enable(Fan::FAN2);
+						if (timer.endTimer())  // Вторые 5 секунд теста для вентилятора 2 истекло : смотрим результат
+ 5a2:	8c 81       	ldd	r24, Y+4	; 0x04
+ 5a4:	88 23       	and	r24, r24
+ 5a6:	09 f4       	brne	.+2      	; 0x5aa <__LOCK_REGION_LENGTH__+0x1aa>
+ 5a8:	b7 cd       	rjmp	.-1170   	; 0x118 <main+0x34>
+						{
+							if (fan2.getStatFeedback() == Fan::normal)
+ 5aa:	81 81       	ldd	r24, Z+1	; 0x01
+ 5ac:	81 30       	cpi	r24, 0x01	; 1
+ 5ae:	41 f4       	brne	.+16     	; 0x5c0 <__LOCK_REGION_LENGTH__+0x1c0>
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+ 5b0:	c0 92 69 00 	sts	0x0069, r12	; 0x800069 <led_N2>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 5b4:	d0 92 67 00 	sts	0x0067, r13	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+			break;
+			case LED_A2: PORTD &=  ~(1 << PD5);
+ 5b8:	95 98       	cbi	0x12, 5	; 18
+						{
+							if (fan2.getStatFeedback() == Fan::normal)
+							{           // Смотрим состояние
+								led_N2.blink(Led::LED_N2);
+								led_A2.disable(Led::LED_A2);
+								stateWork = STATE_WAIT_HOLD;
+ 5ba:	a0 92 76 00 	sts	0x0076, r10	; 0x800076 <stateWork>
+ 5be:	ac cd       	rjmp	.-1192   	; 0x118 <main+0x34>
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 5c0:	f7 01       	movw	r30, r14
+ 5c2:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+		else PORTC &= ~(1 << PC4);
+ 5c4:	ac 98       	cbi	0x15, 4	; 21
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 5c6:	d0 92 69 00 	sts	0x0069, r13	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+ 5ca:	97 98       	cbi	0x12, 7	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 5cc:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+			break;
+			case LED_A2: PORTD |=  (1 << PD5);
+ 5d0:	95 9a       	sbi	0x12, 5	; 18
+ 5d2:	a2 cd       	rjmp	.-1212   	; 0x118 <main+0x34>
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 5d4:	f8 01       	movw	r30, r16
+ 5d6:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+ 5d8:	ab 98       	cbi	0x15, 3	; 21
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 5da:	f7 01       	movw	r30, r14
+ 5dc:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+		else PORTC &= ~(1 << PC4);
+ 5de:	ac 98       	cbi	0x15, 4	; 21
+ 5e0:	9b cd       	rjmp	.-1226   	; 0x118 <main+0x34>
+				fan2.disable(Fan::FAN2);
+			}
+			break;  // конец case STATE_WAIT_HEAT:
+			
+			case STATE_WAIT_HOLD:/*----------------------------- Статус "ОЖИДАНИЕ НИЖНЕГО ПОРОГА ТЕМПЕРАТУРЫ --------------------------------*/
+			if (gettemperature() >= lowTemperature)     // Нижний порог не достигнут - процесс охлаждения
+ 5e2:	7a dd       	rcall	.-1292   	; 0xd8 <_Z14gettemperaturev>
+ 5e4:	81 3d       	cpi	r24, 0xD1	; 209
+ 5e6:	91 40       	sbci	r25, 0x01	; 1
+ 5e8:	0c f4       	brge	.+2      	; 0x5ec <__LOCK_REGION_LENGTH__+0x1ec>
+ 5ea:	c1 c0       	rjmp	.+386    	; 0x76e <__LOCK_REGION_LENGTH__+0x36e>
+			{
+				if (standType == STAND51) // Для стойки 51
+ 5ec:	80 91 75 00 	lds	r24, 0x0075	; 0x800075 <standType>
+ 5f0:	81 11       	cpse	r24, r1
+ 5f2:	21 c0       	rjmp	.+66     	; 0x636 <__LOCK_REGION_LENGTH__+0x236>
+				{
+					if (fan1.getStatFeedback() == Fan::normal)
+ 5f4:	f8 01       	movw	r30, r16
+ 5f6:	81 81       	ldd	r24, Z+1	; 0x01
+ 5f8:	81 30       	cpi	r24, 0x01	; 1
+ 5fa:	31 f4       	brne	.+12     	; 0x608 <__LOCK_REGION_LENGTH__+0x208>
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+ 5fc:	c0 92 6a 00 	sts	0x006A, r12	; 0x80006a <led_N1>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 600:	d0 92 68 00 	sts	0x0068, r13	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+ 604:	94 98       	cbi	0x12, 4	; 18
+ 606:	06 c0       	rjmp	.+12     	; 0x614 <__LOCK_REGION_LENGTH__+0x214>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 608:	d0 92 6a 00 	sts	0x006A, r13	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+ 60c:	96 98       	cbi	0x12, 6	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 60e:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+ 612:	94 9a       	sbi	0x12, 4	; 18
+					{
+						led_N1.disable(Led::LED_N1);
+						led_A1.enable(Led::LED_A1);
+					}
+					
+					if (fan2.getStatFeedback() == Fan::normal)
+ 614:	f7 01       	movw	r30, r14
+ 616:	81 81       	ldd	r24, Z+1	; 0x01
+ 618:	81 30       	cpi	r24, 0x01	; 1
+ 61a:	31 f4       	brne	.+12     	; 0x628 <__LOCK_REGION_LENGTH__+0x228>
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+ 61c:	c0 92 69 00 	sts	0x0069, r12	; 0x800069 <led_N2>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 620:	d0 92 67 00 	sts	0x0067, r13	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+			break;
+			case LED_A2: PORTD &=  ~(1 << PD5);
+ 624:	95 98       	cbi	0x12, 5	; 18
+ 626:	78 cd       	rjmp	.-1296   	; 0x118 <main+0x34>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 628:	d0 92 69 00 	sts	0x0069, r13	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+ 62c:	97 98       	cbi	0x12, 7	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 62e:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+			break;
+			case LED_A2: PORTD |=  (1 << PD5);
+ 632:	95 9a       	sbi	0x12, 5	; 18
+ 634:	71 cd       	rjmp	.-1310   	; 0x118 <main+0x34>
+
+	void reset(void){flagTimer_ = true;}
+	void start(unsigned int endTime)                             // Метод начала отсчёта
+	{
+		
+		if(flagTimer_)                                       // Если флаг таймера поднят, запоминаем время начала отсчёта:
+ 636:	8c 81       	ldd	r24, Y+4	; 0x04
+ 638:	88 23       	and	r24, r24
+ 63a:	31 f0       	breq	.+12     	; 0x648 <__LOCK_REGION_LENGTH__+0x248>
+		{
+			startTime_ = globalTime_;                            // Запоминаем текущее время
+ 63c:	88 81       	ld	r24, Y
+ 63e:	99 81       	ldd	r25, Y+1	; 0x01
+ 640:	9b 83       	std	Y+3, r25	; 0x03
+ 642:	8a 83       	std	Y+2, r24	; 0x02
+			flagTimer_ = false;                              // Опускаем флаг таймера, начинаем считать:
+ 644:	1c 82       	std	Y+4, r1	; 0x04
+ 646:	68 cd       	rjmp	.-1328   	; 0x118 <main+0x34>
+		}
+		else                                                 // Если флаг таймера опущен
+		{
+			if (startTime_ + endTime > MAXTIME )                   // Суммарное время превышает максимальное число таймера
+ 648:	8a 81       	ldd	r24, Y+2	; 0x02
+ 64a:	9b 81       	ldd	r25, Y+3	; 0x03
+ 64c:	ac 01       	movw	r20, r24
+ 64e:	48 57       	subi	r20, 0x78	; 120
+ 650:	5c 4e       	sbci	r21, 0xEC	; 236
+ 652:	4d 3f       	cpi	r20, 0xFD	; 253
+ 654:	f9 ee       	ldi	r31, 0xE9	; 233
+ 656:	5f 07       	cpc	r21, r31
+ 658:	08 f1       	brcs	.+66     	; 0x69c <__LOCK_REGION_LENGTH__+0x29c>
+			{
+				timeTimer_ = globalTime_ <= MAXTIME ? globalTime_ - startTime_: MAXTIME - startTime_ + globalTime_;
+ 65a:	48 81       	ld	r20, Y
+ 65c:	59 81       	ldd	r21, Y+1	; 0x01
+ 65e:	4d 3f       	cpi	r20, 0xFD	; 253
+ 660:	29 ee       	ldi	r18, 0xE9	; 233
+ 662:	52 07       	cpc	r21, r18
+ 664:	20 f4       	brcc	.+8      	; 0x66e <__LOCK_REGION_LENGTH__+0x26e>
+ 666:	9a 01       	movw	r18, r20
+ 668:	28 1b       	sub	r18, r24
+ 66a:	39 0b       	sbc	r19, r25
+ 66c:	05 c0       	rjmp	.+10     	; 0x678 <__LOCK_REGION_LENGTH__+0x278>
+ 66e:	9a 01       	movw	r18, r20
+ 670:	24 50       	subi	r18, 0x04	; 4
+ 672:	36 41       	sbci	r19, 0x16	; 22
+ 674:	28 1b       	sub	r18, r24
+ 676:	39 0b       	sbc	r19, r25
+ 678:	3e 83       	std	Y+6, r19	; 0x06
+ 67a:	2d 83       	std	Y+5, r18	; 0x05
+				if (globalTime_ == startTime_ - (MAXTIME -  endTime) ) // Делаем поправку, переводя время окончания на начало часов
+ 67c:	60 e0       	ldi	r22, 0x00	; 0
+ 67e:	70 e0       	ldi	r23, 0x00	; 0
+ 680:	a0 e0       	ldi	r26, 0x00	; 0
+ 682:	b0 e0       	ldi	r27, 0x00	; 0
+ 684:	84 57       	subi	r24, 0x74	; 116
+ 686:	96 4d       	sbci	r25, 0xD6	; 214
+ 688:	a1 09       	sbc	r26, r1
+ 68a:	b1 09       	sbc	r27, r1
+ 68c:	48 17       	cp	r20, r24
+ 68e:	59 07       	cpc	r21, r25
+ 690:	6a 07       	cpc	r22, r26
+ 692:	7b 07       	cpc	r23, r27
+ 694:	09 f0       	breq	.+2      	; 0x698 <__LOCK_REGION_LENGTH__+0x298>
+ 696:	40 cd       	rjmp	.-1408   	; 0x118 <main+0x34>
+				{
+					flagTimer_ = true;                       // Поднимаем флажок для запоминания следующего времени
+ 698:	dc 82       	std	Y+4, r13	; 0x04
+ 69a:	8f c0       	rjmp	.+286    	; 0x7ba <__LOCK_REGION_LENGTH__+0x3ba>
+				}
+			}
+			else
+			{
+				timeTimer_ = globalTime_ - startTime_;
+ 69c:	28 81       	ld	r18, Y
+ 69e:	39 81       	ldd	r19, Y+1	; 0x01
+ 6a0:	b9 01       	movw	r22, r18
+ 6a2:	68 1b       	sub	r22, r24
+ 6a4:	79 0b       	sbc	r23, r25
+ 6a6:	7e 83       	std	Y+6, r23	; 0x06
+ 6a8:	6d 83       	std	Y+5, r22	; 0x05
+				if (globalTime_ == startTime_ + endTime) flagTimer_ = true;      // Если время окончания отсчёта не превышает максимум часов и отсчитали установленное время
+ 6aa:	42 17       	cp	r20, r18
+ 6ac:	53 07       	cpc	r21, r19
+ 6ae:	09 f0       	breq	.+2      	; 0x6b2 <__LOCK_REGION_LENGTH__+0x2b2>
+ 6b0:	33 cd       	rjmp	.-1434   	; 0x118 <main+0x34>
+ 6b2:	dc 82       	std	Y+4, r13	; 0x04
+ 6b4:	82 c0       	rjmp	.+260    	; 0x7ba <__LOCK_REGION_LENGTH__+0x3ba>
+	
+	typeFan getType() {return type_;}
+	
+	void setStatFeedback(stateFeedbackFan statFeedback) {this->statFeedback_ = statFeedback;} // Устанавливает статус обратной связи
+
+	stateFeedbackFan getStatFeedback() {return statFeedback_;} // Возвращает статус обратной связи
+ 6b6:	f7 01       	movw	r30, r14
+ 6b8:	81 81       	ldd	r24, Z+1	; 0x01
+				else//----------------------- Для стойки 52/54
+				{
+					timer.start(5000);
+					if(timer.endTimer())
+					{
+						if (fan1.getStatFeedback() == Fan::normal && fan2.getStatFeedback() == Fan::normal)
+ 6ba:	81 30       	cpi	r24, 0x01	; 1
+ 6bc:	89 f4       	brne	.+34     	; 0x6e0 <__LOCK_REGION_LENGTH__+0x2e0>
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 6be:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+		else PORTC &= ~(1 << PC4);
+ 6c0:	ac 98       	cbi	0x15, 4	; 21
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 6c2:	f8 01       	movw	r30, r16
+ 6c4:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+ 6c6:	ab 9a       	sbi	0x15, 3	; 21
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+ 6c8:	c0 92 6a 00 	sts	0x006A, r12	; 0x80006a <led_N1>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 6cc:	d0 92 68 00 	sts	0x0068, r13	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+ 6d0:	94 98       	cbi	0x12, 4	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 6d2:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+ 6d6:	97 9a       	sbi	0x12, 7	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 6d8:	d0 92 67 00 	sts	0x0067, r13	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+			break;
+			case LED_A2: PORTD &=  ~(1 << PD5);
+ 6dc:	95 98       	cbi	0x12, 5	; 18
+ 6de:	1c cd       	rjmp	.-1480   	; 0x118 <main+0x34>
+							led_N1.blink(Led::LED_N1);
+							led_A1.disable(Led::LED_A1);
+							led_N2.enable(Led::LED_N2);
+							led_A2.disable(Led::LED_A2);
+						}
+						else if(fan1.getStatFeedback() == Fan::normal && fan2.getStatFeedback() == Fan::fail)
+ 6e0:	81 11       	cpse	r24, r1
+ 6e2:	28 c0       	rjmp	.+80     	; 0x734 <__LOCK_REGION_LENGTH__+0x334>
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 6e4:	f7 01       	movw	r30, r14
+ 6e6:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+		else PORTC &= ~(1 << PC4);
+ 6e8:	ac 98       	cbi	0x15, 4	; 21
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 6ea:	f8 01       	movw	r30, r16
+ 6ec:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+ 6ee:	ab 9a       	sbi	0x15, 3	; 21
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+ 6f0:	c0 92 6a 00 	sts	0x006A, r12	; 0x80006a <led_N1>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 6f4:	d0 92 68 00 	sts	0x0068, r13	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+ 6f8:	94 98       	cbi	0x12, 4	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 6fa:	d0 92 69 00 	sts	0x0069, r13	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+ 6fe:	97 98       	cbi	0x12, 7	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 700:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+			break;
+			case LED_A2: PORTD |=  (1 << PD5);
+ 704:	95 9a       	sbi	0x12, 5	; 18
+ 706:	08 cd       	rjmp	.-1520   	; 0x118 <main+0x34>
+							led_N1.blink(Led::LED_N1);
+							led_A1.disable(Led::LED_A1);
+							led_N2.disable(Led::LED_N2);
+							led_A2.enable(Led::LED_A2);
+						}
+						else if (fan1.getStatFeedback() == Fan::fail && fan2.getStatFeedback() == Fan::normal)
+ 708:	f7 01       	movw	r30, r14
+ 70a:	81 81       	ldd	r24, Z+1	; 0x01
+ 70c:	81 30       	cpi	r24, 0x01	; 1
+ 70e:	91 f4       	brne	.+36     	; 0x734 <__LOCK_REGION_LENGTH__+0x334>
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 710:	f8 01       	movw	r30, r16
+ 712:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+ 714:	ab 98       	cbi	0x15, 3	; 21
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 716:	f7 01       	movw	r30, r14
+ 718:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+		else PORTC |=  (1 << PC4);
+ 71a:	ac 9a       	sbi	0x15, 4	; 21
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 71c:	d0 92 6a 00 	sts	0x006A, r13	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+ 720:	96 98       	cbi	0x12, 6	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 722:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+ 726:	94 9a       	sbi	0x12, 4	; 18
+		}
+	}
+	
+	void blink(numberLed led)
+	{
+		this->state_ = blink_led;
+ 728:	c0 92 69 00 	sts	0x0069, r12	; 0x800069 <led_N2>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 72c:	d0 92 67 00 	sts	0x0067, r13	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+			break;
+			case LED_A2: PORTD &=  ~(1 << PD5);
+ 730:	95 98       	cbi	0x12, 5	; 18
+ 732:	f2 cc       	rjmp	.-1564   	; 0x118 <main+0x34>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 734:	d0 92 6a 00 	sts	0x006A, r13	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+ 738:	96 98       	cbi	0x12, 6	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 73a:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+ 73e:	94 9a       	sbi	0x12, 4	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 740:	d0 92 69 00 	sts	0x0069, r13	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+ 744:	97 98       	cbi	0x12, 7	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 746:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+			break;
+			case LED_A2: PORTD |=  (1 << PD5);
+ 74a:	95 9a       	sbi	0x12, 5	; 18
+						{
+							led_N1.disable(Led::LED_N1);
+							led_A1.enable(Led::LED_A1);
+							led_N2.disable(Led::LED_N2);
+							led_A2.enable(Led::LED_A2);
+							if (fan1.checkEnable())
+ 74c:	f8 01       	movw	r30, r16
+ 74e:	82 81       	ldd	r24, Z+2	; 0x02
+ 750:	81 11       	cpse	r24, r1
+ 752:	06 c0       	rjmp	.+12     	; 0x760 <__LOCK_REGION_LENGTH__+0x360>
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 754:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+ 756:	ab 98       	cbi	0x15, 3	; 21
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 758:	f7 01       	movw	r30, r14
+ 75a:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+		else PORTC |=  (1 << PC4);
+ 75c:	ac 9a       	sbi	0x15, 4	; 21
+ 75e:	dc cc       	rjmp	.-1608   	; 0x118 <main+0x34>
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+	
+	void enable(numberFan FAN) // Включает вентилятор
+	{
+		this->stateWork_ = enable_fan;
+ 760:	f8 01       	movw	r30, r16
+ 762:	12 82       	std	Z+2, r1	; 0x02
+		if (FAN == FAN1) PORTC |=  (1 << PC3);
+ 764:	ab 9a       	sbi	0x15, 3	; 21
+		else PORTC |=  (1 << PC4);
+	}
+	bool checkEnable(){return (stateWork_ == enable_fan ? true : false);}
+	void disable(numberFan FAN) // Выключает вентилятор
+	{
+		this->stateWork_ = disable_fan;
+ 766:	f7 01       	movw	r30, r14
+ 768:	d2 82       	std	Z+2, r13	; 0x02
+		if (FAN == FAN1) PORTC &= ~(1 << PC3);
+		else PORTC &= ~(1 << PC4);
+ 76a:	ac 98       	cbi	0x15, 4	; 21
+ 76c:	d5 cc       	rjmp	.-1622   	; 0x118 <main+0x34>
+					}
+				}
+			}
+			else// Достигли нижнего порога температуры
+			{
+				if (fan1.getStatFeedback() == Fan::normal)
+ 76e:	f8 01       	movw	r30, r16
+ 770:	81 81       	ldd	r24, Z+1	; 0x01
+ 772:	81 30       	cpi	r24, 0x01	; 1
+ 774:	39 f4       	brne	.+14     	; 0x784 <__LOCK_REGION_LENGTH__+0x384>
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 776:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+ 77a:	96 9a       	sbi	0x12, 6	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 77c:	d0 92 68 00 	sts	0x0068, r13	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+ 780:	94 98       	cbi	0x12, 4	; 18
+ 782:	06 c0       	rjmp	.+12     	; 0x790 <__LOCK_REGION_LENGTH__+0x390>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 784:	d0 92 6a 00 	sts	0x006A, r13	; 0x80006a <led_N1>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+ 788:	96 98       	cbi	0x12, 6	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 78a:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <led_A1>
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+ 78e:	94 9a       	sbi	0x12, 4	; 18
+				{
+					led_N1.disable(Led::LED_N1);
+					led_A1.enable(Led::LED_A1);
+				}
+				
+				if (fan2.getStatFeedback() == Fan::normal)
+ 790:	f7 01       	movw	r30, r14
+ 792:	81 81       	ldd	r24, Z+1	; 0x01
+ 794:	81 30       	cpi	r24, 0x01	; 1
+ 796:	39 f4       	brne	.+14     	; 0x7a6 <__LOCK_REGION_LENGTH__+0x3a6>
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 798:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD |=  (1 << PD6);
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+ 79c:	97 9a       	sbi	0x12, 7	; 18
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 79e:	d0 92 67 00 	sts	0x0067, r13	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+			break;
+			case LED_A1: PORTD &=  ~(1 << PD4);
+			break;
+			case LED_A2: PORTD &=  ~(1 << PD5);
+ 7a2:	95 98       	cbi	0x12, 5	; 18
+ 7a4:	06 c0       	rjmp	.+12     	; 0x7b2 <__LOCK_REGION_LENGTH__+0x3b2>
+		}
+	}
+	
+	void disable(numberLed led)
+	{
+		this->state_ = disable_led;
+ 7a6:	d0 92 69 00 	sts	0x0069, r13	; 0x800069 <led_N2>
+		switch (led)
+		{
+			case LED_N1: PORTD &=  ~(1 << PD6);
+			break;
+			case LED_N2: PORTD &=  ~(1 << PD7);
+ 7aa:	97 98       	cbi	0x12, 7	; 18
+	
+	stateLed getStateLed(){return state_;}
+	
+	void enable(numberLed led)
+	{
+		this->state_ = enable_led;
+ 7ac:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <led_A2>
+			break;
+			case LED_N2: PORTD |=  (1 << PD7);
+			break;
+			case LED_A1: PORTD |=  (1 << PD4);
+			break;
+			case LED_A2: PORTD |=  (1 << PD5);
+ 7b0:	95 9a       	sbi	0x12, 5	; 18
+	public:
+	void setGlobalTime(unsigned int globalTime) {this->globalTime_ = globalTime;} // Установка глобальных часов в прерывании таймера-счётчика0
+	unsigned int getGlobalTime(void)            {return globalTime_;}             // Метод получения текущего времени для его обновления в прерывании таймера-счётчика0
+	
+
+	void reset(void){flagTimer_ = true;}
+ 7b2:	dc 82       	std	Y+4, r13	; 0x04
+				{
+					led_N2.disable(Led::LED_N2);
+					led_A2.enable(Led::LED_A2);
+				}
+				timer.reset();
+				stateWork = STATE_WAIT_HEAT;
+ 7b4:	b0 92 76 00 	sts	0x0076, r11	; 0x800076 <stateWork>
+ 7b8:	af cc       	rjmp	.-1698   	; 0x118 <main+0x34>
+	
+	typeFan getType() {return type_;}
+	
+	void setStatFeedback(stateFeedbackFan statFeedback) {this->statFeedback_ = statFeedback;} // Устанавливает статус обратной связи
+
+	stateFeedbackFan getStatFeedback() {return statFeedback_;} // Возвращает статус обратной связи
+ 7ba:	f8 01       	movw	r30, r16
+ 7bc:	81 81       	ldd	r24, Z+1	; 0x01
+				else//----------------------- Для стойки 52/54
+				{
+					timer.start(5000);
+					if(timer.endTimer())
+					{
+						if (fan1.getStatFeedback() == Fan::normal && fan2.getStatFeedback() == Fan::normal)
+ 7be:	81 30       	cpi	r24, 0x01	; 1
+ 7c0:	09 f4       	brne	.+2      	; 0x7c4 <__LOCK_REGION_LENGTH__+0x3c4>
+ 7c2:	79 cf       	rjmp	.-270    	; 0x6b6 <__LOCK_REGION_LENGTH__+0x2b6>
+							led_N1.blink(Led::LED_N1);
+							led_A1.disable(Led::LED_A1);
+							led_N2.disable(Led::LED_N2);
+							led_A2.enable(Led::LED_A2);
+						}
+						else if (fan1.getStatFeedback() == Fan::fail && fan2.getStatFeedback() == Fan::normal)
+ 7c4:	88 23       	and	r24, r24
+ 7c6:	09 f4       	brne	.+2      	; 0x7ca <__LOCK_REGION_LENGTH__+0x3ca>
+ 7c8:	9f cf       	rjmp	.-194    	; 0x708 <__LOCK_REGION_LENGTH__+0x308>
+ 7ca:	b4 cf       	rjmp	.-152    	; 0x734 <__LOCK_REGION_LENGTH__+0x334>
+
+000007cc <__vector_19>:
+	while (ADCSRA & (1 << ADSC)){};    // Ждём окончания преобразования : 13 тактов = 3.25 мкс
+	return (int)ADC;                   // Возвращаем результат из регистров ADCH и ADCL
+}// конец int gettemperature()
+
+ISR (TIMER0_COMP_vect)          /* Прерывание по совпадению таймера-счётчика 0 */
+{
+ 7cc:	1f 92       	push	r1
+ 7ce:	0f 92       	push	r0
+ 7d0:	0f b6       	in	r0, 0x3f	; 63
+ 7d2:	0f 92       	push	r0
+ 7d4:	11 24       	eor	r1, r1
+ 7d6:	2f 93       	push	r18
+ 7d8:	3f 93       	push	r19
+ 7da:	4f 93       	push	r20
+ 7dc:	5f 93       	push	r21
+ 7de:	6f 93       	push	r22
+ 7e0:	7f 93       	push	r23
+ 7e2:	8f 93       	push	r24
+ 7e4:	9f 93       	push	r25
+ 7e6:	af 93       	push	r26
+ 7e8:	bf 93       	push	r27
+ 7ea:	ef 93       	push	r30
+ 7ec:	ff 93       	push	r31
+
+class Time
+{
+	public:
+	void setGlobalTime(unsigned int globalTime) {this->globalTime_ = globalTime;} // Установка глобальных часов в прерывании таймера-счётчика0
+	unsigned int getGlobalTime(void)            {return globalTime_;}             // Метод получения текущего времени для его обновления в прерывании таймера-счётчика0
+ 7ee:	40 91 60 00 	lds	r20, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 7f2:	50 91 61 00 	lds	r21, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+}// конец int gettemperature()
+
+ISR (TIMER0_COMP_vect)          /* Прерывание по совпадению таймера-счётчика 0 */
+{
+	unsigned int lastTime = timer.getGlobalTime();
+	lastTime < MAXTIME ? timer.setGlobalTime(lastTime + 100) : timer.setGlobalTime(0);
+ 7f6:	4c 3f       	cpi	r20, 0xFC	; 252
+ 7f8:	89 ee       	ldi	r24, 0xE9	; 233
+ 7fa:	58 07       	cpc	r21, r24
+ 7fc:	40 f4       	brcc	.+16     	; 0x80e <__vector_19+0x42>
+*/
+
+class Time
+{
+	public:
+	void setGlobalTime(unsigned int globalTime) {this->globalTime_ = globalTime;} // Установка глобальных часов в прерывании таймера-счётчика0
+ 7fe:	ca 01       	movw	r24, r20
+ 800:	8c 59       	subi	r24, 0x9C	; 156
+ 802:	9f 4f       	sbci	r25, 0xFF	; 255
+ 804:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 808:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 80c:	04 c0       	rjmp	.+8      	; 0x816 <__vector_19+0x4a>
+ 80e:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 812:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+ISR (TIMER0_COMP_vect)          /* Прерывание по совпадению таймера-счётчика 0 */
+{
+	unsigned int lastTime = timer.getGlobalTime();
+	lastTime < MAXTIME ? timer.setGlobalTime(lastTime + 100) : timer.setGlobalTime(0);
+	
+	if (lastTime % 1000 == 0)
+ 816:	9a 01       	movw	r18, r20
+ 818:	36 95       	lsr	r19
+ 81a:	27 95       	ror	r18
+ 81c:	36 95       	lsr	r19
+ 81e:	27 95       	ror	r18
+ 820:	36 95       	lsr	r19
+ 822:	27 95       	ror	r18
+ 824:	a5 ec       	ldi	r26, 0xC5	; 197
+ 826:	b0 e2       	ldi	r27, 0x20	; 32
+ 828:	bc d0       	rcall	.+376    	; 0x9a2 <__umulhisi3>
+ 82a:	92 95       	swap	r25
+ 82c:	82 95       	swap	r24
+ 82e:	8f 70       	andi	r24, 0x0F	; 15
+ 830:	89 27       	eor	r24, r25
+ 832:	9f 70       	andi	r25, 0x0F	; 15
+ 834:	89 27       	eor	r24, r25
+ 836:	68 ee       	ldi	r22, 0xE8	; 232
+ 838:	73 e0       	ldi	r23, 0x03	; 3
+ 83a:	86 9f       	mul	r24, r22
+ 83c:	90 01       	movw	r18, r0
+ 83e:	87 9f       	mul	r24, r23
+ 840:	30 0d       	add	r19, r0
+ 842:	96 9f       	mul	r25, r22
+ 844:	30 0d       	add	r19, r0
+ 846:	11 24       	eor	r1, r1
+ 848:	42 17       	cp	r20, r18
+ 84a:	53 07       	cpc	r21, r19
+ 84c:	d9 f4       	brne	.+54     	; 0x884 <__vector_19+0xb8>
+	{
+		
+		if (led_N1.getStateLed() == Led::blink_led) led_N1.invertLightLed(Led::LED_N1);
+ 84e:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <led_N1>
+ 852:	82 30       	cpi	r24, 0x02	; 2
+ 854:	21 f4       	brne	.+8      	; 0x85e <__vector_19+0x92>
+	
+	void invertLightLed(numberLed led)
+	{
+		switch (led)
+		{
+			case LED_N1: PORTD ^=  (1 << PD6);
+ 856:	92 b3       	in	r25, 0x12	; 18
+ 858:	80 e4       	ldi	r24, 0x40	; 64
+ 85a:	89 27       	eor	r24, r25
+ 85c:	82 bb       	out	0x12, r24	; 18
+	
+	if (lastTime % 1000 == 0)
+	{
+		
+		if (led_N1.getStateLed() == Led::blink_led) led_N1.invertLightLed(Led::LED_N1);
+		if (led_N2.getStateLed() == Led::blink_led) led_N2.invertLightLed(Led::LED_N2);
+ 85e:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <led_N2>
+ 862:	82 30       	cpi	r24, 0x02	; 2
+ 864:	79 f4       	brne	.+30     	; 0x884 <__vector_19+0xb8>
+	{
+		switch (led)
+		{
+			case LED_N1: PORTD ^=  (1 << PD6);
+			break;
+			case LED_N2: PORTD ^=  (1 << PD7);
+ 866:	82 b3       	in	r24, 0x12	; 18
+ 868:	80 58       	subi	r24, 0x80	; 128
+ 86a:	82 bb       	out	0x12, r24	; 18
+	if (lastTime % 1000 == 0)
+	{
+		
+		if (led_N1.getStateLed() == Led::blink_led) led_N1.invertLightLed(Led::LED_N1);
+		if (led_N2.getStateLed() == Led::blink_led) led_N2.invertLightLed(Led::LED_N2);
+		if (led_N1.getStateLed() == Led::blink_led && led_N2.getStateLed() == Led::blink_led)
+ 86c:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <led_N1>
+ 870:	82 30       	cpi	r24, 0x02	; 2
+ 872:	41 f4       	brne	.+16     	; 0x884 <__vector_19+0xb8>
+ 874:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <led_N2>
+ 878:	82 30       	cpi	r24, 0x02	; 2
+ 87a:	21 f4       	brne	.+8      	; 0x884 <__vector_19+0xb8>
+		{
+			if (!(PIND & (1 << PD6)) && PIND & (1 << PD7)) led_N1.invertLightLed(Led::LED_N1); // Если оба светодиода мигают, синхронизируем их мигание
+ 87c:	86 99       	sbic	0x10, 6	; 16
+ 87e:	02 c0       	rjmp	.+4      	; 0x884 <__vector_19+0xb8>
+ 880:	87 99       	sbic	0x10, 7	; 16
+ 882:	4d c0       	rjmp	.+154    	; 0x91e <__vector_19+0x152>
+		}
+	}
+	
+	unsigned int timeToFail = 0;
+	if (fan1.checkEnable())
+ 884:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <fan1+0x2>
+ 888:	81 11       	cpse	r24, r1
+ 88a:	22 c0       	rjmp	.+68     	; 0x8d0 <__vector_19+0x104>
+
+	stateFeedbackFan getStatFeedback() {return statFeedback_;} // Возвращает статус обратной связи
+	
+	void setTimeToFail(unsigned int timeToFail){this->timeToFail_ = timeToFail;}
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+ 88c:	80 91 73 00 	lds	r24, 0x0073	; 0x800073 <fan1+0x3>
+ 890:	90 91 74 00 	lds	r25, 0x0074	; 0x800074 <fan1+0x4>
+	
+	unsigned int timeToFail = 0;
+	if (fan1.checkEnable())
+	{
+		timeToFail = fan1.getTimeToFail();
+		if (timeToFail >= 100) fan1.setTimeToFail(timeToFail - 100);
+ 894:	84 36       	cpi	r24, 0x64	; 100
+ 896:	91 05       	cpc	r25, r1
+ 898:	30 f0       	brcs	.+12     	; 0x8a6 <__vector_19+0xda>
+	
+	void setStatFeedback(stateFeedbackFan statFeedback) {this->statFeedback_ = statFeedback;} // Устанавливает статус обратной связи
+
+	stateFeedbackFan getStatFeedback() {return statFeedback_;} // Возвращает статус обратной связи
+	
+	void setTimeToFail(unsigned int timeToFail){this->timeToFail_ = timeToFail;}
+ 89a:	84 56       	subi	r24, 0x64	; 100
+ 89c:	91 09       	sbc	r25, r1
+ 89e:	90 93 74 00 	sts	0x0074, r25	; 0x800074 <fan1+0x4>
+ 8a2:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <fan1+0x3>
+	}
+	
+	void checkFeedback (numberFan FAN)
+	{
+		
+		if (type_ == FAN_AR00)
+ 8a6:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <fan1>
+ 8aa:	81 11       	cpse	r24, r1
+ 8ac:	08 c0       	rjmp	.+16     	; 0x8be <__vector_19+0xf2>
+		{
+			if (FAN == FAN1)
+			{
+				if (PINB & (1 << PB0)) timeToFail_ = TimeToFail;
+ 8ae:	b0 9b       	sbis	0x16, 0	; 22
+ 8b0:	06 c0       	rjmp	.+12     	; 0x8be <__vector_19+0xf2>
+ 8b2:	80 ea       	ldi	r24, 0xA0	; 160
+ 8b4:	9f e0       	ldi	r25, 0x0F	; 15
+ 8b6:	90 93 74 00 	sts	0x0074, r25	; 0x800074 <fan1+0x4>
+ 8ba:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <fan1+0x3>
+			}
+			else if (PINB & (1 << PB1)) timeToFail_ = TimeToFail;
+		}
+		statFeedback_ = (timeToFail_ == 0) ? fail : normal;
+ 8be:	e0 e7       	ldi	r30, 0x70	; 112
+ 8c0:	f0 e0       	ldi	r31, 0x00	; 0
+ 8c2:	81 e0       	ldi	r24, 0x01	; 1
+ 8c4:	23 81       	ldd	r18, Z+3	; 0x03
+ 8c6:	34 81       	ldd	r19, Z+4	; 0x04
+ 8c8:	23 2b       	or	r18, r19
+ 8ca:	09 f4       	brne	.+2      	; 0x8ce <__vector_19+0x102>
+ 8cc:	80 e0       	ldi	r24, 0x00	; 0
+ 8ce:	81 83       	std	Z+1, r24	; 0x01
+	{
+		timeToFail = fan1.getTimeToFail();
+		if (timeToFail >= 100) fan1.setTimeToFail(timeToFail - 100);
+		fan1.checkFeedback(Fan::FAN1);
+	}
+	if (fan2.checkEnable())
+ 8d0:	80 91 6d 00 	lds	r24, 0x006D	; 0x80006d <fan2+0x2>
+ 8d4:	81 11       	cpse	r24, r1
+ 8d6:	28 c0       	rjmp	.+80     	; 0x928 <__vector_19+0x15c>
+
+	stateFeedbackFan getStatFeedback() {return statFeedback_;} // Возвращает статус обратной связи
+	
+	void setTimeToFail(unsigned int timeToFail){this->timeToFail_ = timeToFail;}
+	
+	unsigned int getTimeToFail(){return timeToFail_;}
+ 8d8:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <fan2+0x3>
+ 8dc:	90 91 6f 00 	lds	r25, 0x006F	; 0x80006f <fan2+0x4>
+		fan1.checkFeedback(Fan::FAN1);
+	}
+	if (fan2.checkEnable())
+	{
+		timeToFail = fan2.getTimeToFail();
+		if (timeToFail >= 100) fan2.setTimeToFail(timeToFail - 100);
+ 8e0:	84 36       	cpi	r24, 0x64	; 100
+ 8e2:	91 05       	cpc	r25, r1
+ 8e4:	30 f0       	brcs	.+12     	; 0x8f2 <__vector_19+0x126>
+	
+	void setStatFeedback(stateFeedbackFan statFeedback) {this->statFeedback_ = statFeedback;} // Устанавливает статус обратной связи
+
+	stateFeedbackFan getStatFeedback() {return statFeedback_;} // Возвращает статус обратной связи
+	
+	void setTimeToFail(unsigned int timeToFail){this->timeToFail_ = timeToFail;}
+ 8e6:	84 56       	subi	r24, 0x64	; 100
+ 8e8:	91 09       	sbc	r25, r1
+ 8ea:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <fan2+0x4>
+ 8ee:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <fan2+0x3>
+	}
+	
+	void checkFeedback (numberFan FAN)
+	{
+		
+		if (type_ == FAN_AR00)
+ 8f2:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <fan2>
+ 8f6:	81 11       	cpse	r24, r1
+ 8f8:	08 c0       	rjmp	.+16     	; 0x90a <__vector_19+0x13e>
+		{
+			if (FAN == FAN1)
+			{
+				if (PINB & (1 << PB0)) timeToFail_ = TimeToFail;
+			}
+			else if (PINB & (1 << PB1)) timeToFail_ = TimeToFail;
+ 8fa:	b1 9b       	sbis	0x16, 1	; 22
+ 8fc:	06 c0       	rjmp	.+12     	; 0x90a <__vector_19+0x13e>
+ 8fe:	80 ea       	ldi	r24, 0xA0	; 160
+ 900:	9f e0       	ldi	r25, 0x0F	; 15
+ 902:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <fan2+0x4>
+ 906:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <fan2+0x3>
+		}
+		statFeedback_ = (timeToFail_ == 0) ? fail : normal;
+ 90a:	eb e6       	ldi	r30, 0x6B	; 107
+ 90c:	f0 e0       	ldi	r31, 0x00	; 0
+ 90e:	81 e0       	ldi	r24, 0x01	; 1
+ 910:	23 81       	ldd	r18, Z+3	; 0x03
+ 912:	34 81       	ldd	r19, Z+4	; 0x04
+ 914:	23 2b       	or	r18, r19
+ 916:	09 f4       	brne	.+2      	; 0x91a <__vector_19+0x14e>
+ 918:	80 e0       	ldi	r24, 0x00	; 0
+ 91a:	81 83       	std	Z+1, r24	; 0x01
+	{
+		timeToFail = fan2.getTimeToFail();
+		if (timeToFail >= 100) fan2.setTimeToFail(timeToFail - 100);
+		fan2.checkFeedback(Fan::FAN2);
+	}
+} // конец ISR (TIMER0_COMP_vect)
+ 91c:	05 c0       	rjmp	.+10     	; 0x928 <__vector_19+0x15c>
+	
+	void invertLightLed(numberLed led)
+	{
+		switch (led)
+		{
+			case LED_N1: PORTD ^=  (1 << PD6);
+ 91e:	92 b3       	in	r25, 0x12	; 18
+ 920:	80 e4       	ldi	r24, 0x40	; 64
+ 922:	89 27       	eor	r24, r25
+ 924:	82 bb       	out	0x12, r24	; 18
+ 926:	ae cf       	rjmp	.-164    	; 0x884 <__vector_19+0xb8>
+	{
+		timeToFail = fan2.getTimeToFail();
+		if (timeToFail >= 100) fan2.setTimeToFail(timeToFail - 100);
+		fan2.checkFeedback(Fan::FAN2);
+	}
+} // конец ISR (TIMER0_COMP_vect)
+ 928:	ff 91       	pop	r31
+ 92a:	ef 91       	pop	r30
+ 92c:	bf 91       	pop	r27
+ 92e:	af 91       	pop	r26
+ 930:	9f 91       	pop	r25
+ 932:	8f 91       	pop	r24
+ 934:	7f 91       	pop	r23
+ 936:	6f 91       	pop	r22
+ 938:	5f 91       	pop	r21
+ 93a:	4f 91       	pop	r20
+ 93c:	3f 91       	pop	r19
+ 93e:	2f 91       	pop	r18
+ 940:	0f 90       	pop	r0
+ 942:	0f be       	out	0x3f, r0	; 63
+ 944:	0f 90       	pop	r0
+ 946:	1f 90       	pop	r1
+ 948:	18 95       	reti
+
+0000094a <__vector_1>:
+
+ISR (INT0_vect)                            /* Прерывание INT0 */
+{
+ 94a:	1f 92       	push	r1
+ 94c:	0f 92       	push	r0
+ 94e:	0f b6       	in	r0, 0x3f	; 63
+ 950:	0f 92       	push	r0
+ 952:	11 24       	eor	r1, r1
+ 954:	8f 93       	push	r24
+ 956:	9f 93       	push	r25
+	
+	void setStatFeedback(stateFeedbackFan statFeedback) {this->statFeedback_ = statFeedback;} // Устанавливает статус обратной связи
+
+	stateFeedbackFan getStatFeedback() {return statFeedback_;} // Возвращает статус обратной связи
+	
+	void setTimeToFail(unsigned int timeToFail){this->timeToFail_ = timeToFail;}
+ 958:	80 ea       	ldi	r24, 0xA0	; 160
+ 95a:	9f e0       	ldi	r25, 0x0F	; 15
+ 95c:	90 93 74 00 	sts	0x0074, r25	; 0x800074 <fan1+0x4>
+ 960:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <fan1+0x3>
+} // конец ISR (TIMER0_COMP_vect)
+
+ISR (INT0_vect)                            /* Прерывание INT0 */
+{
+	fan1.setTimeToFail(TimeToFail);      // Восстанавливем счётчик вентилятора 1
+} // конец ISR (INT0_vect)
+ 964:	9f 91       	pop	r25
+ 966:	8f 91       	pop	r24
+ 968:	0f 90       	pop	r0
+ 96a:	0f be       	out	0x3f, r0	; 63
+ 96c:	0f 90       	pop	r0
+ 96e:	1f 90       	pop	r1
+ 970:	18 95       	reti
+
+00000972 <__vector_2>:
+
+ISR (INT1_vect)                            /* Прерывание INT1 */
+{
+ 972:	1f 92       	push	r1
+ 974:	0f 92       	push	r0
+ 976:	0f b6       	in	r0, 0x3f	; 63
+ 978:	0f 92       	push	r0
+ 97a:	11 24       	eor	r1, r1
+ 97c:	8f 93       	push	r24
+ 97e:	9f 93       	push	r25
+	
+	void setStatFeedback(stateFeedbackFan statFeedback) {this->statFeedback_ = statFeedback;} // Устанавливает статус обратной связи
+
+	stateFeedbackFan getStatFeedback() {return statFeedback_;} // Возвращает статус обратной связи
+	
+	void setTimeToFail(unsigned int timeToFail){this->timeToFail_ = timeToFail;}
+ 980:	80 ea       	ldi	r24, 0xA0	; 160
+ 982:	9f e0       	ldi	r25, 0x0F	; 15
+ 984:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <fan2+0x4>
+ 988:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <fan2+0x3>
+} // конец ISR (INT0_vect)
+
+ISR (INT1_vect)                            /* Прерывание INT1 */
+{
+	fan2.setTimeToFail(TimeToFail);                // Восстанавливем счётчик вентилятора 2
+} // конец ISR (INT1_vect)
+ 98c:	9f 91       	pop	r25
+ 98e:	8f 91       	pop	r24
+ 990:	0f 90       	pop	r0
+ 992:	0f be       	out	0x3f, r0	; 63
+ 994:	0f 90       	pop	r0
+ 996:	1f 90       	pop	r1
+ 998:	18 95       	reti
+
+0000099a <_GLOBAL__sub_I_stateWork>:
+конкретного объекта, то в методах классов для работы с
+аппаратной чатью необходимо явно указывать,
+для какого объекта вызываемый метод предназначен.
+*/
+
+class Time
+ 99a:	81 e0       	ldi	r24, 0x01	; 1
+ 99c:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <__DATA_REGION_ORIGIN__+0x4>
+ 9a0:	08 95       	ret
+
+000009a2 <__umulhisi3>:
+ 9a2:	a2 9f       	mul	r26, r18
+ 9a4:	b0 01       	movw	r22, r0
+ 9a6:	b3 9f       	mul	r27, r19
+ 9a8:	c0 01       	movw	r24, r0
+ 9aa:	a3 9f       	mul	r26, r19
+ 9ac:	01 d0       	rcall	.+2      	; 0x9b0 <__umulhisi3+0xe>
+ 9ae:	b2 9f       	mul	r27, r18
+ 9b0:	70 0d       	add	r23, r0
+ 9b2:	81 1d       	adc	r24, r1
+ 9b4:	11 24       	eor	r1, r1
+ 9b6:	91 1d       	adc	r25, r1
+ 9b8:	08 95       	ret
+
+000009ba <__tablejump2__>:
+ 9ba:	ee 0f       	add	r30, r30
+ 9bc:	ff 1f       	adc	r31, r31
+ 9be:	05 90       	lpm	r0, Z+
+ 9c0:	f4 91       	lpm	r31, Z
+ 9c2:	e0 2d       	mov	r30, r0
+ 9c4:	09 94       	ijmp
+
+000009c6 <_exit>:
+ 9c6:	f8 94       	cli
+
+000009c8 <__stop_program>:
+ 9c8:	ff cf       	rjmp	.-2      	; 0x9c8 <__stop_program>
