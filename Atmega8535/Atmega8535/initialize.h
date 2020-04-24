@@ -10,8 +10,6 @@
 #ifndef INITIALAZE_H_
 #define INITIALAZE_H_
 
-extern unsigned int counterStateFAN1;
-extern unsigned int counterStateFAN2;
 void port_initialize(void);                  /* Инициализация портов ввода-вывода                       */
 void ADC_initialize(void);                   /* Инициализация АЦП                                       */
 void externalInterruption_initialize(void);  /* Инициализация внешних прерываний для вентияляторов AF00 */
